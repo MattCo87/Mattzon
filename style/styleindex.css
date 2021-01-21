@@ -1,0 +1,81 @@
+body{
+    font-family: "Comic Sans MS", cursive;
+    background-color: white;
+    margin:0;
+    padding:0;
+}
+
+#div-menu{
+    font-size: 13px;
+    background-color: black;
+ /*   border: 2px solid yellow;  */
+    height: 43px;
+    color: white;
+    text-align: center;
+    margin:0;
+    padding:0;
+    margin-top:0;
+    margin-bottom:0;
+}
+
+#div-offre{
+    font-size: 13px;
+    background-color: #FF6666;
+/*    border: 4px solid green;  */
+    height: 400px;
+    width: 98%;
+    color: white;
+    text-align: center;
+    margin-left:1%;
+    padding:0;
+}
+
+p{
+    display: inline-block;
+/*    border: 2px solid red;  */
+    margin:0;
+    padding:0;
+}
+
+#p-offre{
+    height: 70px;
+    width: 68%;    
+}
+
+#fleche{
+    font-family: Arial;
+    font-size: 30px;
+    height: 75px;
+    width: 15%;
+}
+.menu{
+    width: 12%;
+    height: 40px;
+/*    border: 2px solid green;  */
+}
+
+#recherche{
+    width: 37%;
+    height: 40px;
+/*   border: 2px solid red;  */
+}
+
+#div-offre-choix{
+/*    border: 2px solid black; */
+    width:96%;
+    padding-top:30px;
+    margin-left:30px;
+    
+}
+.multi-offre{
+    display: inline-block;
+    background-color:white;
+    height: 270px;
+    width: 20%;
+    margin-bottom:0;
+    margin-left:3%;
+}
+
+#div-fleche{
+/*    border: 2px solid black; */
+}
