@@ -1,0 +1,88 @@
+html {
+  font-size: 16px;
+}
+
+body {
+  margin: 0;
+}
+
+.app-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgb(12, 10, 134);
+}
+
+.app-header a {
+  text-decoration: none;
+  color: white;
+}
+.app-header h1 {
+  margin: 0;
+}
+
+.app-header h1 span {
+  font-size: 0.75em;
+  font-weight: normal;
+}
+
+ul.menu {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+}
+
+ul.menu a {
+  margin: 0 1rem;
+}
+
+ul.menu span {
+  width: 350px;
+  text-align: center;
+  color: greenyellow;
+}
+
+.app-maincontenu {
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(rgb(66, 68, 155), white);
+  height: 700px;
+}
+
+ul.offre {
+  color: white;
+  justify-content: space-between;
+  margin: 0;
+  padding: 20px;
+  list-style: none;
+  display: flex;
+}
+
+ul.offre a {
+  text-decoration: none;
+  color: white;
+  font-weight: 900;
+  font-size: 50px;
+}
+
+.app-maincontenu .offre span {
+  font-size: 30px;
+  color: greenyellow;
+}
+
+ul.choix-offre {
+  justify-content: space-between;
+  list-style: none;
+  display: flex;
+  margin-top: 170px;
+  padding: 0;
+}
+
+.choix-offre li {
+  margin: 10px;
+  width: 25%;
+  height: 350px;
+  background-color: white;
+}
