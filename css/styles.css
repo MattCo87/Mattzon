@@ -26,6 +26,9 @@ body {
   font-weight: normal;
 }
 
+.app-header div {
+  color: white;
+}
 ul.menu {
   margin: 0;
   padding: 0;
@@ -51,16 +54,14 @@ ul.menu span {
   height: 700px;
 }
 
-ul.offre {
-  color: white;
+.app-maincontenu .offre {
   justify-content: space-between;
+  display: flex;
+  align-items: center;
   margin: 0;
   padding: 20px;
-  list-style: none;
-  display: flex;
 }
-
-ul.offre a {
+.app-maincontenu .offre a {
   text-decoration: none;
   color: white;
   font-weight: 900;
@@ -69,20 +70,22 @@ ul.offre a {
 
 .app-maincontenu .offre span {
   font-size: 30px;
-  color: greenyellow;
+  color: white;
 }
 
-ul.choix-offre {
+.app-maincontenu .choix-offre {
   justify-content: space-between;
-  list-style: none;
   display: flex;
-  margin-top: 170px;
-  padding: 0;
+  align-items: center;
+  margin-top: 150px;
+  padding: 30px;
 }
 
-.choix-offre li {
-  margin: 10px;
+.app-maincontenu .choix-offre div {
+  margin: 20px;
   width: 25%;
   height: 350px;
   background-color: white;
+  text-align: center;
+  align-items: center;
 }
