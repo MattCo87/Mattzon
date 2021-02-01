@@ -1,91 +1,130 @@
 html {
-  font-size: 16px;
+    font-size: 16px;
 }
 
 body {
-  margin: 0;
+    margin: 0;
 }
 
 .app-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: rgb(12, 10, 134);
+	top:0;
+    border: 3px solid black;
+    display: flex;
+    justify-content: space-between;
+	align-items: center;
+    background-color: rgb(66, 68, 155);
 }
 
 .app-header a {
-  text-decoration: none;
-  color: white;
+    text-decoration: none;
+    color: white;
 }
+
 .app-header h1 {
-  margin: 0;
+    margin: 0;
 }
 
 .app-header h1 span {
-  font-size: 0.75em;
-  font-weight: normal;
+    font-size: 0.75em;
+    font-weight: normal;
 }
 
 .app-header div {
-  color: white;
+    color: white;
 }
+
 ul.menu {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  display: flex;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
 }
 
 ul.menu a {
-  margin: 0 1rem;
+    margin: 0 1rem;
 }
 
 ul.menu span {
-  width: 350px;
-  text-align: center;
-  color: greenyellow;
+    width: 350px;
+    text-align: center;
+    color: greenyellow;
 }
 
 .app-maincontenu {
-  align-items: center;
-  margin: 0;
-  padding: 0;
-  background: linear-gradient(rgb(66, 68, 155), white);
-  height: 700px;
+    border: 3px solid black;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(rgb(66, 68, 155), white);
 }
 
 .app-maincontenu .offre {
-  justify-content: space-between;
-  display: flex;
-  align-items: center;
-  margin: 0;
-  padding: 20px;
+    justify-content: space-between;
+    display: flex;
+    align-items: center;
+    margin: 0;
+    padding: 20px;
 }
+
 .app-maincontenu .offre a {
-  text-decoration: none;
-  color: white;
-  font-weight: 900;
-  font-size: 50px;
+    text-decoration: none;
+    color: white;
+    font-weight: 900;
+    font-size: 90px;
 }
 
 .app-maincontenu .offre span {
-  font-size: 30px;
-  color: white;
+    font-size: 30px;
+    color: white;
 }
 
 .app-maincontenu .choix-offre {
-  justify-content: space-between;
-  display: flex;
-  align-items: center;
-  margin-top: 150px;
-  padding: 30px;
+    justify-content: space-between;
+    display: flex;
+    align-items: center;
+    margin-top: 150px;
+    padding: 30px;
 }
 
 .app-maincontenu .choix-offre div {
-  margin: 20px;
-  width: 25%;
-  height: 350px;
-  background-color: white;
-  text-align: center;
-  align-items: center;
+    margin: 20px;
+    width: 25%;
+    height: 350px;
+    background-color: white;
+    text-align: center;
+    align-items: center;
+}
+
+img {
+    max-width: 100%;
+}
+
+h2 {
+    text-align: center;
+}
+
+.vignettes {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 1.5rem;
+}
+
+.vignette {
+    color: blue;
+}
+
+.promo-inscription {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 1.5rem;
+}
+
+.zone-vignette-tendance {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 1.5rem;
+}
+
+.app-footer {
+    border: 3px solid black;
 }
