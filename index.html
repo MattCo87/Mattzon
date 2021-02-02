@@ -1,58 +1,106 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <!-- Informations destinées au navigateur -->
-    <meta charset="utf-8" />
+    <head>
+        <!-- Informations destinées au navigateur -->
+        <meta charset="utf-8" />
 
-    <!-- Informations destinées au SEO (Search Engine Optimization = référencement naturel) -->
-    <title>Mattzon</title>
+        <!-- Informations destinées au SEO (Search Engine Optimization = référencement naturel) -->
+        <title>aMattzon</title>
 
-    <!-- Feuilles de styles -->
-    <link rel="stylesheet" href="css/styles.css" />
-  </head>
+        <!-- Feuilles de styles -->
+        <link rel="stylesheet" href="css/styles.css" />
+    </head>
 
-  <body>
-    <!-- Application header -->
-    <header class="app-header">
-      <h1>
-        <a href="index.html"> <span>a</span>Mattzon<span>.fr</span> </a>
-      </h1>
+    <body>
+        <!-- Application header -->
+        <header class="app-header">
+            <h1>
+                <a href="index.html"> <span>a</span>Mattzon<span>.fr</span> </a>
+            </h1>
+            <nav class="app-mainmenu">
+                <ul class="menu">
+                    <li>
+                        <a href="index.html">Accueil</a>
+                    </li>
+                    <li>
+                        <a href="#">Catalogue</a>
+                    </li>
+                    <li>
+                        <a href="#">Connexion / Inscription</a>
+                    </li>
+                    <li>
+                        <a href="#">Mon panier</a>
+                    </li>
+                    <li>
+                        <a href="#">Contact</a>
+                    </li>
+                </ul>
+            </nav>
+            <div>Recherche</div>
+        </header>
 
-      <nav class="app-mainmenu">
-        <ul class="menu">
-          <li>
-            <a href="index.html">Accueil</a>
-          </li>
-          <li>
-            <a href="#">Catalogue</a>
-          </li>
-          <li>
-            <span>Recherche</span>
-          </li>
-          <li>
-            <a href="#">Connexion / Inscription</a>
-          </li>
-          <li>
-            <a href="#">Mon panier</a>
-          </li>
-          <li>
-            <a href="#">Contact</a>
-          </li>
-        </ul>
-      </nav>
-    </header>
-    <main class="app-maincontenu">
-      <ul class="offre">
-        <li><a href="#">&lt;</a></li>
-        <li><span>Offres</span></li>
-        <li><a href="#">&gt;</a></li>
-      </ul>
-      <ul class="choix-offre">
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-      </ul>
-    </main>
-  </body>
+        <!-- Application main -->
+        <main class="app-maincontenu">
+            <!-- Section offre du jour -->
+            <section class="offres-du-jour">
+                <!-- Titre des offres du jour -->
+                <h2>Les offres du jour</h2>
+
+                <!-- Conteneur des vignettes -->
+                <div class="vignettes">
+                    <!-- Vignette produit -->
+                    <div class="vignette">
+                        <a
+                            href="#"
+                            class="vignette-image"
+                            title="Voir la fiche produit"
+                        >
+                            <img
+                                src="IMG/nike-pegasus.jpg"
+                                alt="Pardon je vous la pique 2s"
+                            />
+                        </a>
+
+                        <h3>Nike Pegasus</h3>
+                        <p class="prix">125€</p>
+
+
+                        <div class="vignette-option">
+                            <p><a href="#"></h>En savoir +</a></p>
+                            <p><a href="#">Ajouter au panier</a></p>
+                        </div>
+                        
+                    </div>
+
+                    <!-- Vignette produit -->
+                    <div class="vignette">
+                        <img src="https://place-hold.it/200" alt="" />
+                        <h3>Nom du produit</h3>
+                        <p>Description courte</p>
+                        <p class="prix">30€</p>
+                    </div>
+
+                    <!-- Vignette produit -->
+                    <div class="vignette">
+                        <img src="https://place-hold.it/200" alt="" />
+                        <h3>Nom du produit</h3>
+                        <p>Description courte</p>
+                        <p class="prix">990€</p>
+                    </div>
+                </div>
+            </section>
+
+
+
+
+
+
+
+
+        </main>
+        <!-- Application footer-->
+        <footer class="app-footer">
+            <h2>Footer</h2>
+        </footer>
+    </body>
 </html>

@@ -1,88 +1,152 @@
+/* BODY */
 html {
-  font-size: 16px;
+    font-size: 16px;
+    font-family: 'Verdana';
 }
 
 body {
-  margin: 0;
+    margin: 0;
 }
 
+
+h2 {
+    margin-top: 0;
+    text-align: center;
+}
+
+
+/* HEADER */
 .app-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: rgb(12, 10, 134);
+    padding: 0 1.5rem;
+    top: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgb(66, 68, 155);
 }
 
 .app-header a {
-  text-decoration: none;
-  color: white;
+    text-decoration: none;
+    color: white;
 }
+
 .app-header h1 {
-  margin: 0;
+    margin: 0;
+    font-size: 26px;
+    font-weight: normal;
 }
 
-.app-header h1 span {
-  font-size: 0.75em;
-  font-weight: normal;
+
+.app-header div {
+    color: white;
 }
 
+/* NAVIGATION */
 ul.menu {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  display: flex;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
 }
 
 ul.menu a {
-  margin: 0 1rem;
+    margin: 0 1rem;
 }
 
-ul.menu span {
-  width: 350px;
-  text-align: center;
-  color: greenyellow;
-}
 
+/* MAIN */
 .app-maincontenu {
-  align-items: center;
-  margin: 0;
-  padding: 0;
-  background: linear-gradient(rgb(66, 68, 155), white);
-  height: 700px;
+    align-items: center;
+    background: linear-gradient(rgb(66, 68, 155), white);
 }
 
-ul.offre {
-  color: white;
-  justify-content: space-between;
-  margin: 0;
-  padding: 20px;
-  list-style: none;
-  display: flex;
+.app-maincontenu section {
+    padding: 3rem 1.5rem;
 }
 
-ul.offre a {
-  text-decoration: none;
-  color: white;
-  font-weight: 900;
-  font-size: 50px;
+.app-maincontenu .offre {
+    justify-content: space-between;
+    display: flex;
+    align-items: center;
+    margin: 0;
+    padding: 20px;
+}
+
+.app-maincontenu .offre a {
+    color: white;
+    font-weight: 900;
+    font-size: 90px;
 }
 
 .app-maincontenu .offre span {
-  font-size: 30px;
-  color: greenyellow;
+    font-size: 30px;
+    color: white;
 }
 
-ul.choix-offre {
-  justify-content: space-between;
-  list-style: none;
-  display: flex;
-  margin-top: 170px;
-  padding: 0;
+/* VIGNETTES */
+.vignettes {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 1.5rem;
 }
 
-.choix-offre li {
-  margin: 10px;
-  width: 25%;
-  height: 350px;
-  background-color: white;
+.vignette {
+    text-align: center;
+    border: 1px solid #cfcfcf;
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+.vignette-image {
+    display: block;
+    position: relative;
+    overflow: hidden;
+    height: 200px;
+}
+
+.vignette-image img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.prix {
+    font-size:30px;
+}
+
+.vignette .vignette-option {
+    display: flex;
+    justify-content: space-between;
+    font-size: 20px;
+    padding-left:30px;
+    padding-right:30px;
+}
+
+.vignette .vignette-option a{
+    text-decoration: none;
+    color: red;
+
+}
+
+
+
+/* BANNIERE CTA */
+.promo-inscription {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 1.5rem;
+}
+
+.zone-vignette-tendance {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 1.5rem;
+}
+
+
+/* FOOTER */
+.app-footer {
+    padding: 3rem 1.5rem;
 }
