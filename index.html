@@ -3,6 +3,7 @@
     <head>
         <!-- Informations destinées au navigateur -->
         <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
 
         <!-- Informations destinées au SEO (Search Engine Optimization = référencement naturel) -->
         <title>aMattzon</title>
@@ -14,9 +15,13 @@
     <body>
         <!-- Application header -->
         <header class="app-header">
+
+            <!-- Logo du site-->
             <h1>
                 <a href="index.html"> <span>a</span>Mattzon<span>.fr</span> </a>
             </h1>
+
+            <!-- Barre de navigation du site-->
             <nav class="app-mainmenu">
                 <ul class="menu">
                     <li>
@@ -36,68 +41,262 @@
                     </li>
                 </ul>
             </nav>
-            <div>Recherche</div>
+
+            <!-- Barre de recherche -->
+            <div>
+                <a href="#">Recherche</a>
+            </div>
+
+            <!-- Menu Hamburger -->
+            <div class="hamburger">
+                <a href="#">
+                    <img src="img/hamburger.jpg" alt="Un menu hamburger" />
+                </a>
+            </div>
         </header>
 
         <!-- Application main -->
         <main class="app-maincontenu">
+
             <!-- Section offre du jour -->
             <section class="offres-du-jour">
+
                 <!-- Titre des offres du jour -->
                 <h2>Les offres du jour</h2>
 
                 <!-- Conteneur des vignettes -->
                 <div class="vignettes">
-                    <!-- Vignette produit -->
+
+                    <!-- Vignette produit N°1 -->
                     <div class="vignette">
                         <a
                             href="#"
                             class="vignette-image"
-                            title="Voir la fiche produit"
+                            title="La Pegasis"
                         >
                             <img
-                                src="IMG/nike-pegasus.jpg"
+                                src="img/nike-pegasus.jpg"
                                 alt="Pardon je vous la pique 2s"
                             />
                         </a>
-
-                        <h3>Nike Pegasus</h3>
+                        <h3>Pegasis</h3>
                         <p class="prix">125€</p>
-
-
-                        <div class="vignette-option">
-                            <p><a href="#"></h>En savoir +</a></p>
-                            <p><a href="#">Ajouter au panier</a></p>
-                        </div>
                         
+                        <!-- Affichage des options de vignette PC -->
+                        <div class="vignette-option-pc">
+                            <p>
+                                <a href="#">En savoir + </a>
+                            </p>
+                            <p>
+                                <a href="#"> Ajouter au panier </a>
+                            </p>
+                        </div>
+
+                        <!-- Affichage des options de vignette Tablette -->
+                        <div class="vignette-option-tablette">
+                            <p>
+                                <a href="#">
+                                    <img
+                                        src="img/plus.jpg"
+                                        alt="Une description"
+                                    />
+                                </a>
+                            </p>
+                            <p>
+                                <a href="#">
+                                    <img src="img/panier.jpg" alt="Un panier" />
+                                </a>
+                            </p>
+                        </div>
                     </div>
 
-                    <!-- Vignette produit -->
+                    <!-- Vignette produit N°2 -->
                     <div class="vignette">
-                        <img src="https://place-hold.it/200" alt="" />
-                        <h3>Nom du produit</h3>
-                        <p>Description courte</p>
-                        <p class="prix">30€</p>
+                        <a
+                            href="#"
+                            class="vignette-image"
+                            title="La Flavius"
+                        >
+                            <img
+                                src="img/Flavius.jpg"
+                                alt="Une création athypique de Flavio"
+                            />
+                        </a>
+                        <h3>Flavius</h3>
+                        <p class="prix">59,99€</p>
+
+                        <!-- Affichage des options de vignette PC -->
+                        <div class="vignette-option-pc">
+                            <p>
+                                <a href="#">En savoir + </a>
+                            </p>
+                            <p>
+                                <a href="#"> Ajouter au panier </a>
+                            </p>
+                        </div>
+
+                        <!-- Affichage des options de vignette Tablette -->
+                        <div class="vignette-option-tablette">
+                            <p>
+                                <a href="#">
+                                    <img
+                                        src="img/plus.jpg"
+                                        alt="Une description"
+                                    />
+                                </a>
+                            </p>
+                            <p>
+                                <a href="#">
+                                    <img src="img/panier.jpg" alt="Un panier" />
+                                </a>
+                            </p>
+                        </div>
                     </div>
 
-                    <!-- Vignette produit -->
+                    <!-- Vignette produit N°3 -->
                     <div class="vignette">
-                        <img src="https://place-hold.it/200" alt="" />
-                        <h3>Nom du produit</h3>
-                        <p>Description courte</p>
-                        <p class="prix">990€</p>
+                        <a
+                            href="#"
+                            class="vignette-image"
+                            title="La JupiTerrien"
+                        >
+                            <img
+                                src="img/JupiTerrien.jpg"
+                                alt="De Jupiter à la Terre"
+                            />
+                        </a>
+                        <h3>JupiTerrien</h3>
+                        <p class="prix">39,99€</p>
+
+                        <!-- Affichage des options de vignette PC -->
+                        <div class="vignette-option-pc">
+                            <p>
+                                <a href="#">En savoir + </a>
+                            </p>
+                            <p>
+                                <a href="#"> Ajouter au panier </a>
+                            </p>
+                        </div>
+
+                        <!-- Affichage des options de vignette Tablette -->
+                        <div class="vignette-option-tablette">
+                            <p>
+                                <a href="#">
+                                    <img
+                                        src="img/plus.jpg"
+                                        alt="Une description"
+                                    />
+                                </a>
+                            </p>
+                            <p>
+                                <a href="#">
+                                    <img src="img/panier.jpg" alt="Un panier" />
+                                </a>
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Vignette produit N°4 -->
+                    <div class="vignette">
+                        <a
+                            href="#"
+                            class="vignette-image"
+                            title="La Britain666"
+                        >
+                        <img
+                            src="img/Britain666.jpg"
+                            alt="De Jupiter à la Terre"
+                        />
+                        </a>
+                        <h3>Britain666</h3>
+                        <p class="prix">66,6€</p>
+
+                        <!-- Affichage des options de vignette PC -->
+                        <div class="vignette-option-pc">
+                            <p>
+                                <a href="#">En savoir + </a>
+                            </p>
+                            <p>
+                                <a href="#"> Ajouter au panier </a>
+                            </p>
+                        </div>
+
+                        <!-- Affichage des options de vignette Tablette -->
+                        <div class="vignette-option-tablette">
+                            <p>
+                                <a href="#">
+                                <img
+                                    src="img/plus.jpg"
+                                        alt="Une description"
+                                />
+                                </a>
+                            </p>
+                                <p>
+                                    <a href="#">
+                                    <img 
+                                        src="img/panier.jpg" 
+                                        alt="Un panier" 
+                                    />
+                                    </a>
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Vignette produit N°4 -->
+                    <div class="vignette">
+                    <a
+                        href="#"
+                        class="vignette-image"
+                        title="La JordanWhite"
+                    >
+                    <img                
+                        src="img/JordanWhite.jpg"
+                        alt="La référence"
+                    />
+                    </a>
+                    <h3>JordanWhite</h3>
+                    <p class="prix">
+                        39,99€
+                    </p>
+
+                    <!-- Affichage des options de vignette PC -->
+                    <div class="vignette-option-pc">
+                        <p>
+                            <a href="#">
+                                En savoir +
+                            </a>
+                        </p>
+                        <p>
+                            <a href="#">
+                                Ajouter au panier   
+                            </a>
+                        </p>
+                    </div>
+
+                    <!-- Affichage des options de vignette Tablette -->
+                    <div class="vignette-option-tablette">
+                        <p>
+                            <a href="#">
+                                <img
+                                    src="img/plus.jpg"
+                                    alt="Une description"
+                               />
+                            </a>
+                        </p>
+                        <p>
+                            <a href="#">
+                                <img 
+                                    src="img/panier.jpg" 
+                                    alt="Un panier" 
+                                />
+                            </a>
+                        </p>
                     </div>
                 </div>
+
             </section>
-
-
-
-
-
-
-
-
         </main>
+
         <!-- Application footer-->
         <footer class="app-footer">
             <h2>Footer</h2>

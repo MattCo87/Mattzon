@@ -1,19 +1,17 @@
 /* BODY */
 html {
     font-size: 16px;
-    font-family: 'Verdana';
+    font-family: "Verdana";
 }
 
 body {
     margin: 0;
 }
 
-
 h2 {
     margin-top: 0;
     text-align: center;
 }
-
 
 /* HEADER */
 .app-header {
@@ -23,6 +21,7 @@ h2 {
     justify-content: space-between;
     align-items: center;
     background-color: rgb(66, 68, 155);
+    height: 40px;
 }
 
 .app-header a {
@@ -34,11 +33,15 @@ h2 {
     margin: 0;
     font-size: 26px;
     font-weight: normal;
+    text-align: center;
 }
 
-
-.app-header div {
+.app-header .hamburger {
+    display: none;
+    margin-top: 1rem;
     color: white;
+    font-size: 20px;
+    font-weight: normal;
 }
 
 /* NAVIGATION */
@@ -47,12 +50,12 @@ ul.menu {
     padding: 0;
     list-style: none;
     display: flex;
+    text-align: center;
 }
 
 ul.menu a {
     margin: 0 1rem;
 }
-
 
 /* MAIN */
 .app-maincontenu {
@@ -113,24 +116,27 @@ ul.menu a {
 }
 
 .prix {
-    font-size:30px;
+    font-size: 30px;
 }
 
-.vignette .vignette-option {
+/* COMPORTEMENT DES VIGNETTES EN MODE PC */
+.vignette .vignette-option-pc {
     display: flex;
-    justify-content: space-between;
-    font-size: 20px;
-    padding-left:30px;
-    padding-right:30px;
+    justify-content: space-around;
+    font-size: 15px;
 }
 
-.vignette .vignette-option a{
+.vignette .vignette-option-pc a {
     text-decoration: none;
     color: red;
-
 }
 
-
+/* COMPORTEMENT DES VIGNETTES EN MODE TABLETTE */
+.vignette .vignette-option-tablette {
+    display: none;
+    justify-content: space-around;
+    font-size: 20px;
+}
 
 /* BANNIERE CTA */
 .promo-inscription {
@@ -145,8 +151,45 @@ ul.menu a {
     grid-gap: 1.5rem;
 }
 
-
 /* FOOTER */
 .app-footer {
     padding: 3rem 1.5rem;
+}
+
+/* Media query pour les smartphones */
+@media (max-width: 768px) {
+    /* BARRE DE NAVIGATION */
+    .app-header nav {
+        display: none;
+    }
+
+    .app-header .hamburger {
+        display: block;
+        position: relative;
+        overflow: hidden;
+        object-fit: cover;
+        height: 100%;
+        text-align: right;
+    }
+
+    /* VIGNETTES */
+    .vignettes {
+        display: block;
+    }
+
+    .vignettes .vignette {
+        margin-bottom: 1.5rem;
+    }
+
+    .vignette .vignette-option-pc {
+        display: none;
+        justify-content: space-around;
+        font-size: 20px;
+    }
+
+    .vignette .vignette-option-tablette {
+        display: flex;
+        justify-content: space-around;
+        font-size: 20px;
+    }
 }
