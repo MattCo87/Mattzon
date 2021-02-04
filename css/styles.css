@@ -31,7 +31,7 @@ h2 {
 
 .app-header h1 {
     margin: 0;
-    font-size: 26px;
+    font-size: 50px;
     font-weight: normal;
     text-align: center;
 }
@@ -55,6 +55,14 @@ ul.menu {
 
 ul.menu a {
     margin: 0 1rem;
+}
+
+.app-header .barre-recherche-pc{
+    display: flex;
+}
+
+.app-header .barre-recherche-tablette{
+    display: none;
 }
 
 /* MAIN */
@@ -159,8 +167,24 @@ ul.menu a {
 /* Media query pour les smartphones */
 @media (max-width: 768px) {
     /* BARRE DE NAVIGATION */
+
+    .app-header h1 {
+        margin: 0;
+        padding-right: 1rem;
+        font-size: 22px;
+        font-weight: bold;
+        text-align: center;
+    }
     .app-header nav {
         display: none;
+    }
+
+    .app-header .barre-recherche-pc{
+        display: none;
+    }
+
+    .app-header .barre-recherche-tablette{
+        display: flex;
     }
 
     .app-header .hamburger {
