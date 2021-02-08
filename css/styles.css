@@ -1,5 +1,6 @@
 /* BODY */
 html {
+    grid-template-columns: repeat(2, 1fr);
     font-size: 16px;
     font-family: "Verdana";
 }
@@ -9,7 +10,8 @@ body {
 }
 
 h2 {
-    margin-top: 0;
+    margin-top: 1rem;
+    margin-bottom: 3rem;
     text-align: center;
 }
 
@@ -94,7 +96,7 @@ ul.menu a {
     color: white;
 }
 
-/* VIGNETTES */
+/* VIGNETTES ACCUEIL*/
 .vignettes {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -147,10 +149,20 @@ ul.menu a {
 }
 
 /* BANNIERE CTA */
-.promo-inscription {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-gap: 1.5rem;
+.bandeau-inscription {
+    display: inline;
+    text-align: center;
+}
+
+.bandeau-inscription div{
+    background-color: rgb(64, 64, 153);
+}
+
+.bandeau-inscription a {
+    font-size: 2rem;
+    font-weight: bolder;
+    text-decoration: none;
+    color: white;
 }
 
 .zone-vignette-tendance {
@@ -164,14 +176,96 @@ ul.menu a {
     padding: 3rem 1.5rem;
 }
 
+
+/* FEUILLE INSCRIPTION */
+
+form {
+    display: flex;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 1.5rem;
+}
+
+
+fieldset {
+    border: none;
+    border-bottom-left-radius: 1.5rem;
+    border-top-right-radius: 3rem;
+    background-color: #cfcfcf;
+    box-shadow: 4px 4px 8px rgb(66, 68, 155);
+}
+
+legend {
+    margin-bottom: 1rem;
+    font-weight: bold;
+}
+
+.form-group {
+    display: grid;
+    grid-template-columns: 4fr 6fr;
+    margin-bottom: 1rem;    
+}
+
+.submit {
+    grid-column: 2;
+    background-color: transparent;
+    box-shadow: none;
+}
+
+.submit .form-group {
+    margin-bottom: 0;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 1rem;
+}
+
+/* FORMULAIRE D INSCRIPTION */
+
+.formulaire-connexion {
+    display: flex;
+}
+
+/* MISE EN FORME BOUTON FORMULAIRE */
+
+.submit .form-group button {
+    padding: 0.5rem 1.5rem;
+    font-weight: bold;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.submit .form-group button[type="submit"] {
+    border: none;
+    font-size: 1.5rem;
+    color: white;
+    background-color: green;
+    border-bottom-left-radius: 1.5rem;
+    border-top-right-radius: 3rem;
+    box-shadow: 4px 4px 8px rgb(1, 199, 1);
+}
+
+.submit .form-group button[type="cancel"] {
+    color: black;
+    font-size: 1rem;
+    border: 2px solid orangered;
+    border-bottom-left-radius: 1.5rem;
+    border-top-right-radius: 3rem;
+    box-shadow: 4px 4px 8px orangered;
+}
+
+
+
+
 /* Media query pour les smartphones */
 @media (max-width: 768px) {
     /* BARRE DE NAVIGATION */
+    .app-header {
+        padding: 0 0.85rem;
+    }
 
     .app-header h1 {
         margin: 0;
-        padding-right: 1rem;
-        font-size: 22px;
+        padding-right: 0.25rem;
+        font-size: 18px;
         font-weight: bold;
         text-align: center;
     }
@@ -214,6 +308,11 @@ ul.menu a {
     .vignette .vignette-option-tablette {
         display: flex;
         justify-content: space-around;
-        font-size: 20px;
+        font-size: 30px;
     }
+
+/* DESCRIPTION DU FORMULAIRE DANS INSCRIPTION.html */
+
+form {
+    display: block;
 }
