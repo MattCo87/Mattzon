@@ -9,10 +9,6 @@
         <title>aMattzon</title>
 
         <!-- Feuilles de styles -->
-
-        <!-- Ajouter lien du style -->
-
-
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css" />
         <link rel="stylesheet" href="css/styles.css" />
     </head>
@@ -42,7 +38,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="connexion.html">
+                        <a href="connexion.php">
                             <i class="fas fa-power-off"></i>
                             Connexion</a>
                     </li>
@@ -90,8 +86,32 @@
                 <!-- Titre d'inscription -->
                 <h2>Inscrivez-vous !</h2>
 
+                <?php if(isset($_GET['message'])) : ?>
+                    <?php if(!empty($_GET['message'])) : ?>
+                        <p class="error">
+                            <?php
+                            switch($_GET['message']) {
+                                case 'empty' :
+                                    echo 'Tous les champs sont obligatoires.';
+                                    break;
+                                case 'email' :
+                                    echo "Cet email n'est pas valide.";
+                                    break;
+                                case 'password' :
+                                    echo 'Les deux mots de passe doivent être identiques.';
+                                    break;
+                                default :
+                                    echo 'Un problème bizarre est survenu…';
+                                    break;
+                            }
+                            ?>
+
+                        </p>
+                    <?php endif; ?>
+                <?php endif; ?>
+
                 <!-- Formulaire d'inscription-->
-                <form method="post" action="php/inscription.php">
+                <form method="post" action="php/traitement_inscription.php">
                     <fieldset>
                         <legend>
                             Vos informations de connexion
@@ -99,7 +119,7 @@
                         
                         <div class="form-group">
                             <label for="email">Votre email :</label>
-                            <input type="email" name="email" id="email" />
+                            <input type="text" name="email" id="email" />
                         </div>
                         
                         <div class="form-group">

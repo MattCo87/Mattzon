@@ -42,7 +42,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="inscription.html">
+                        <a href="connexion.php">
                             <i class="fas fa-power-off"></i>
                             Connexion</a>
                     </li>
@@ -91,8 +91,34 @@
                 
                 <h2><i class="fas fa-power-off"></i> &nbsp Connexion</h2>
 
+            <!-- Traitement du message -->
+                <?php if(isset($_GET['message'])) : ?>
+                    <?php if(!empty($_GET['message'])) : ?>
+                        <p class="error">
+                            <?php
+                            switch($_GET['message']) {
+                                case 'nomatch' :
+                                    echo "Le mot de passe n'est pas valide.";
+                                    break;
+                                case 'invalide' :
+                                    echo "Ce compte n'existe pas.";
+                                    break;
+                                case 'registered' :
+                                        echo "Bienvenue !!";
+                                    break;
+                                default :
+                                    echo 'Un problème bizarre est survenu…';
+                                    break;
+                            }
+                            ?>
+
+                        </p>
+                    <?php endif; ?>
+                <?php endif; ?>
+            <!-- Fin du traitement du message -->
+
                 <!-- Formulaire de connexion-->
-                <form method="post" name="formulaire-connexion">
+                <form method="post" name="formulaire-connexion" action="php/traitement_connexion.php">
                     <fieldset>
                         <legend>
                             Vos informations de connexion
@@ -100,21 +126,22 @@
                         
                         <div class="form-group">
                             <label for="email">Votre email :</label>
-                            <input type="email" name="email" id="email" />
+                            <input type="email" name="email" id="email" required />
                         </div>
                         
                         <div class="form-group">
                             <label for="password">Votre mot de passe :</label>
-                            <input type="password" name="password" id="password" />
+                            <input type="password" name="password" id="password" required />
                         </div>
                     </fieldset>
+
                     <fieldset class="submit">
                         <div class="form-group">
                             <button type="cancel">
                                 Annuler
                             </button>
                             <button type="submit">
-                                Enregistrer
+                                Se connecter
                             </button>
                         </div>
                     </fieldset>

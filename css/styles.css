@@ -257,6 +257,17 @@ legend {
     box-shadow: 4px 4px 8px orangered;
 }
 
+p.error {
+    padding: 0.5rem 1rem;
+    margin: 2rem auto 4rem;
+    width: 40%;
+    text-align: center;
+    font-weight: bold;
+    color: white;
+    background-color: red;
+    border-radius: 1.5rem;;
+}
+
 
 
 
