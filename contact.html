@@ -1,28 +1,3 @@
-<!-- Traitement du message -->
-<?php 
-$info = '';
-
-if(isset($_GET['message'])){
-    if(!empty($_GET['message'])){
-        switch($_GET['message']) {
-            case 'empty' :
-                $info = 'Tous les champs sont obligatoires.';
-            break;
-            case 'email' :
-                $info = "Cet email n'est pas valide.";
-            break;
-            case 'password' :
-                $info = 'Les deux mots de passe doivent être identiques.';
-            break;
-            default :
-                $info = 'Un problème bizarre est survenu…';
-            break;
-        }
-    }
-}
-?>
-<!-- Fin du traitement du message -->
-
 <!DOCTYPE html>
 <html>
     <head>
@@ -34,6 +9,10 @@ if(isset($_GET['message'])){
         <title>aMattzon</title>
 
         <!-- Feuilles de styles -->
+
+        <!-- Ajouter lien du style -->
+
+
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css" />
         <link rel="stylesheet" href="css/styles.css" />
     </head>
@@ -104,75 +83,72 @@ if(isset($_GET['message'])){
 
         <!-- Application main -->
         <main class="app-maincontenu">
+            
+            <section class="contact">
+                <h2>Ecrivez-nous !</h2>
 
-            <!-- Section inscription -->
-            <section class="inscription">
+                <!-- Creation du formulaire -->
+                <form method="post" action="#">
 
-                <!-- Titre d'inscription -->
-                <h2>Inscrivez-vous !</h2>
-
-                <!-- Affichage du message -->
-                <?php if (!empty($info)): ?>
-                    <p class="error">
-                        <?php echo $info; ?>
-                    </p>
-                <?php endif; ?>
-                <!-- Fin Affichage du message -->
-
-                <!-- Formulaire d'inscription-->
-                <form method="post" action="php/traitement_inscription.php">
-                    <fieldset>
+                    <!-- Zone Vos coordonnées -->
+                    <!-- Titre de la zone -->
+                    <fieldset class="formset">
                         <legend>
-                            Vos informations de connexion
+                            vos coordonnées
                         </legend>
-                        
+
+                        <!-- Champs de la zone coordonnées -->
                         <div class="form-group">
-                            <label for="email">Votre email :</label>
-                            <input type="text" name="email" id="email" />
-                        </div>
-                        
+                            <label for="nom">Nom:<span>*</span></label>
+                            <input type="text" id="nom" required />
+                        </div>           
                         <div class="form-group">
-                            <label for="password">Votre mot de passe :</label>
-                            <input type="password" name="password" id="password" />
-                        </div>
-                        
+                            <label for="prenom">Prénom:<span>*</span></label>
+                            <input type="text" id="prenom" required />
+                        </div>          
                         <div class="form-group">
-                            <label for="passwordconfirm">Confirmation :</label>
-                            <input type="password" name="passwordconfirm" id="passwordconfirm" />
+                            <label for="email">Mail:<span>*</span></label>
+                            <input type="email" id="email" required />
                         </div>
                     </fieldset>
-                    
-                    <fieldset>
+
+                    <!-- Zone Votre message -->
+                    <!-- Titre de la zone -->
+                    <fieldset class="formset">
                         <legend>
-                            Vos informations personnelles
+                            votre message
                         </legend>
-                        
+
+                       <!-- Champs de la zone message -->               
                         <div class="form-group">
-                            <label for="prenom">Votre prénom :</label>
-                            <input type="text" name="prenom" id="prenom" />
-                        </div>
-                        
+                            <label for="type" id="demande">Type de demande:<span>*</span></label>
+                            <select id="demande">
+                                <option> Générale </option>
+                                <option> Professionnelle </option>
+                                <option> Personnelle </option>
+                            </select>
+                        </div>       
                         <div class="form-group">
-                            <label for="nom">Votre nom :</label>
-                            <input type="text" name="nom" id="nom" />
+                            <label for="sujet">Sujet:<span>*</span></label>
+                            <input type="text" id="sujet" required />
+                        </div>       
+                        <div class="form-group">
+                            <label for="message" id="message">Message:<span>*</span></label>
+                            <textarea id="message" rows="7" cols="30" required ></textarea>
                         </div>
-                        
                     </fieldset>
-                    
+
+                    <!-- Zone Bouton Soumettre -->            
                     <fieldset class="submit">
-                        <div class="form-group">
-                            <button type="cancel">
-                                Annuler
-                            </button>
+                        <div class="form-envoyer">
                             <button type="submit">
-                                Enregistrer
+                                Envoyer
                             </button>
                         </div>
                     </fieldset>
-                </form>
-
-            </section>
-        </main>
+                   </form>
+                </section>
+            </main>
 
         <!-- Application footer-->
         <footer class="app-footer">

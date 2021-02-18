@@ -1,3 +1,29 @@
+<!-- Traitement du message -->
+<?php
+$class = '';
+$info = '';
+$connexion ='Connexion';
+$lien = "connexion.php";
+
+if (isset($_GET['message'])) {
+    if (!empty($_GET['message'])) {
+        switch ($_GET['message']) {
+            case 'registered':
+                $class = 'success';
+                $info = "Bienvenue !!";
+                $connexion = "Déconnexion";
+                $lien = "index.php";
+                break;
+            default:
+                $class = 'error';
+                $info = 'Un problème bizarre est survenu…';
+                break;
+        }
+    }
+}
+?>
+<!-- Fin du traitement du message -->
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -23,14 +49,14 @@
 
             <!-- Logo du site-->
             <h1>
-                <a href="index.html"> <span>a</span>Mattzon<span>.fr</span> </a>
+                <a href="index.php"> <span>a</span>Mattzon<span>.fr</span> </a>
             </h1>
 
             <!-- Barre de navigation du site-->
             <nav class="app-mainmenu">
                 <ul class="menu">
                     <li>
-                        <a href="index.html">
+                        <a href="index.php">
                             <i class="fas fa-home"></i>
                             Accueil
                         </a>
@@ -42,9 +68,10 @@
                         </a>
                     </li>
                     <li>
-                        <a href="connexion.php">
+                        <a href= <?php echo $lien; ?>>
                             <i class="fas fa-power-off"></i>
-                            Connexion</a>
+                            <?php echo $connexion; ?>
+                        </a>
                     </li>
                     <li>
                         <a href="#">
@@ -52,7 +79,7 @@
                             Mon panier</a>
                     </li>
                     <li>
-                        <a href="#">
+                        <a href="contact.html">
                             <i class="fas fa-mail-bulk"></i>
                             Contact
                         </a>
@@ -86,6 +113,14 @@
 
             <!-- Section offre du jour -->
             <section class="offres-du-jour">
+
+                <?php if (!empty($class)): ?>
+                    <!-- Affichage du message -->
+                    <p class="<?php echo $class; ?>">
+                        <?php echo $info; ?>
+                    </p>
+                    <!-- Fin Affichage du message -->
+                <?php endif; ?>
 
                 <!-- Titre des offres du jour -->
                 <h2>Les offres du jour</h2>
@@ -218,15 +253,16 @@
                 </div>
             </section>
 
-            <!-- Application inscription -->
-            <section class="bandeau-inscription">
-                <div >
-                    <a href="inscription.php">
-                        Inscrivez-vous !
-                    </a>
-               </div>
-            </section>
-
+            <?php if (empty($class)): ?>
+                <!-- Application inscription -->
+                <section class="bandeau-inscription">
+                    <div >
+                        <a href="inscription.php">
+                            Inscrivez-vous !
+                        </a>
+                   </div>
+                </section>
+            <?php endif; ?>
         </main>
 
         <!-- Application footer-->

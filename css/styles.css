@@ -69,12 +69,15 @@ ul.menu a {
 
 /* MAIN */
 .app-maincontenu {
+    display: grid;
     align-items: center;
     background: linear-gradient(rgb(66, 68, 155), white);
 }
 
 .app-maincontenu section {
+    display:grid;
     padding: 3rem 1.5rem;
+    align-items: center;
 }
 
 .app-maincontenu .offre {
@@ -179,10 +182,14 @@ ul.menu a {
 
 /* FEUILLE INSCRIPTION */
 
+
 form {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    width : 40%;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
     grid-gap: 1.5rem;
+    margin: 0 auto;
 }
 
 
@@ -192,6 +199,7 @@ fieldset {
     border-top-right-radius: 3rem;
     background-color: #cfcfcf;
     box-shadow: 4px 4px 8px rgb(66, 68, 155);
+    margin-bottom: 1.5rem;
 }
 
 legend {
@@ -209,8 +217,44 @@ legend {
     margin-bottom: 1rem;    
 }
 
+.form-envoyer {
+    text-align : right;
+}
+
+.form-envoyer button[type="submit"] {
+    border: none;
+    font-size: 1.5rem;
+    color: white;
+    background-color: green;
+    border-bottom-left-radius: 1.5rem;
+    border-top-right-radius: 3rem;
+    box-shadow: 4px 4px 8px rgb(1, 199, 1);
+    padding: 0.5rem 1.5rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+label {
+
+    font-size: 14px;
+    color: black;
+    margin-right: 1rem;
+    text-align: right;
+}
+
+label span {
+    color: red;
+}
+
+textarea {
+    width: 90%;
+}
+
+select {
+    width: 50%;
+}
+
 .submit {
-    grid-column: 2;
     background-color: transparent;
     box-shadow: none;
 }
@@ -265,6 +309,17 @@ p.error {
     font-weight: bold;
     color: white;
     background-color: red;
+    border-radius: 1.5rem;;
+}
+
+p.success {
+    padding: 0.5rem 1rem;
+    margin: 2rem auto 4rem;
+    width: 40%;
+    text-align: center;
+    font-weight: bold;
+    color: white;
+    background-color: green;
     border-radius: 1.5rem;;
 }
 
