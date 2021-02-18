@@ -74,7 +74,7 @@ if (isset($_GET['message'])) {
                         </a>
                     </li>
                     <li>
-                        <a href="#">
+                        <a href="test_connexion_bdd.php">
                             <i class="fas fa-cart-arrow-down"></i> 
                             Mon panier</a>
                     </li>
