@@ -14,6 +14,9 @@ if(isset($_GET['message'])){
             case 'password' :
                 $info = 'Les deux mots de passe doivent être identiques.';
             break;
+            case 'already' :
+                $info = 'Il existe déjà un compte associé à cet adresse e-mail.';
+            break;
             default :
                 $info = 'Un problème bizarre est survenu…';
             break;
@@ -108,15 +111,15 @@ if(isset($_GET['message'])){
             <!-- Section inscription -->
             <section class="inscription">
 
-                <!-- Titre d'inscription -->
-                <h2>Inscrivez-vous !</h2>
-
                 <!-- Affichage du message -->
-                <?php if (!empty($info)): ?>
+                <?php if (!empty($info)){ ?>
                     <p class="error">
                         <?php echo $info; ?>
                     </p>
-                <?php endif; ?>
+                <?php //Titre d'inscription
+                    }else{
+                            echo "<h2>Inscrivez-vous !</h2>";
+                    } ?>
                 <!-- Fin Affichage du message -->
 
                 <!-- Formulaire d'inscription-->

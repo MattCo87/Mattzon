@@ -1,5 +1,8 @@
 <!-- Traitement du message -->
 <?php
+
+require_once('php/connexion_bdd.php');
+
 $class = '';
 $info = '';
 $connexion ='Connexion';

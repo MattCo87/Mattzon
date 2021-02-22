@@ -1,5 +1,6 @@
 <!-- Traitement du message -->
 <?php
+
 $class = '';
 $info = '';
 
@@ -113,16 +114,17 @@ if (isset($_GET['message'])) {
             <!-- Section connexion -->
             <section class="connexion">
 
-                <!-- Titre d'inscription -->
-                
-                <h2><i class="fas fa-power-off"></i> &nbsp Connexion</h2>
-
+                <!-- Titre d'inscription -->              
                 <!-- Affichage du message -->
-                <?php if (!empty($class)): ?>
-                    <p class="<?php echo $class; ?>">
+
+                <?php if (!empty($info)){ ?>
+                    <p class="error">
                         <?php echo $info; ?>
                     </p>
-                <?php endif; ?>
+                <?php //Titre d'inscription
+                    }else{
+                            echo "<h2><i class='fas fa-power-off'></i> &nbsp Connexion</h2>";
+                    } ?>
                 <!-- Fin Affichage du message -->
 
                 <!-- Formulaire de connexion-->

@@ -1,1 +1,7 @@
-User (id PK, nom, prenom, email, password)
+User {
+    id INT PK NN AI,
+    nom VARCHAR(255),
+    prenom VARCHAR(255),
+    email VARCHAR(255) NN,
+    pwd VARCHAR(255) NN
+}

@@ -1,12 +1,15 @@
 /* BODY */
 html {
-    grid-template-columns: repeat(2, 1fr);
     font-size: 16px;
     font-family: "Verdana";
 }
 
 body {
     margin: 0;
+    display: flex;
+    min-height: 90vh;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 h2 {
@@ -23,7 +26,6 @@ h2 {
     justify-content: space-between;
     align-items: center;
     background-color: rgb(66, 68, 155);
-    height: 40px;
 }
 
 .app-header a {
