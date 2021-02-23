@@ -110,18 +110,18 @@ if(isset($_GET['message'])){
 
             <!-- Section inscription -->
             <section class="inscription">
-
-                <!-- Affichage du message -->
-                <?php if (!empty($info)){ ?>
-                    <p class="error">
-                        <?php echo $info; ?>
-                    </p>
-                <?php //Titre d'inscription
-                    }else{
-                            echo "<h2>Inscrivez-vous !</h2>";
-                    } ?>
+                <h2>
+                    <!-- Affichage du message -->
+                    <?php if (!empty($info)){ ?>
+                        <p class="error">
+                            <?php echo $info; ?>
+                        </p>
+                    <?php //Titre d'inscription
+                        }else{
+                                echo "Inscrivez-vous !";
+                        } ?>
                 <!-- Fin Affichage du message -->
-
+                </h2>
                 <!-- Formulaire d'inscription-->
                 <form method="post" action="php/traitement_inscription.php">
                     <fieldset>

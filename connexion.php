@@ -7,13 +7,9 @@ $info = '';
 if (isset($_GET['message'])) {
     if (!empty($_GET['message'])) {
         switch ($_GET['message']) {
-            case 'nomatch':
-                $class = 'error';
-                $info = "Le mot de passe n'est pas valide.";
-                break;
             case 'invalide':
                 $class = 'error';
-                $info = "Ce compte n'existe pas.";
+                $info = "E-mail ou mot de passe incorrect.";
                 break;
             default:
                 $class = 'error';
@@ -116,17 +112,17 @@ if (isset($_GET['message'])) {
 
                 <!-- Titre d'inscription -->              
                 <!-- Affichage du message -->
-
-                <?php if (!empty($info)){ ?>
-                    <p class="error">
-                        <?php echo $info; ?>
-                    </p>
-                <?php //Titre d'inscription
-                    }else{
-                            echo "<h2><i class='fas fa-power-off'></i> &nbsp Connexion</h2>";
-                    } ?>
-                <!-- Fin Affichage du message -->
-
+                <h2>
+                    <?php if (!empty($info)){ ?>
+                        <p class="error">
+                            <?php echo $info; ?>
+                        </p>
+                    <?php //Titre d'inscription
+                        }else{
+                                echo "<i class='fas fa-power-off'></i> &nbsp Connexion";
+                        } ?>
+                    <!-- Fin Affichage du message -->
+                </h2>
                 <!-- Formulaire de connexion-->
                 <form method="post" action="php/traitement_connexion.php">
                     <fieldset>

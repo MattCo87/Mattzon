@@ -17,6 +17,10 @@ if (isset($_GET['message'])) {
                 $connexion = "Déconnexion";
                 $lien = "index.php";
                 break;
+            case 'msgok';
+                $class = 'success';
+                $info = "Votre message est envoyé !";
+                break;
             default:
                 $class = 'error';
                 $info = 'Un problème bizarre est survenu…';
@@ -82,7 +86,7 @@ if (isset($_GET['message'])) {
                             Mon panier</a>
                     </li>
                     <li>
-                        <a href="contact.html">
+                        <a href="contact.php">
                             <i class="fas fa-mail-bulk"></i>
                             Contact
                         </a>

@@ -1,3 +1,26 @@
+<!-- Traitement du message -->
+<?php 
+$info = '';
+
+if(isset($_POST['message'])){
+    if(!empty($_POST['message'])){
+        switch($_POST['message']) {
+            case 'empty' :
+                $info = 'Tous les champs sont obligatoires.';
+            break;
+            default :
+                $info = 'Un problème bizarre est survenu…';
+            break;
+        }
+    }
+}
+?>
+<!-- Fin du traitement du message -->
+
+
+
+
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -88,7 +111,7 @@
                 <h2>Ecrivez-nous !</h2>
 
                 <!-- Creation du formulaire -->
-                <form method="post" action="#">
+                <form method="post" action="php/traitement_contact.php">
 
                     <!-- Zone Vos coordonnées -->
                     <!-- Titre de la zone -->
@@ -100,15 +123,15 @@
                         <!-- Champs de la zone coordonnées -->
                         <div class="form-group">
                             <label for="nom">Nom:<span>*</span></label>
-                            <input type="text" id="nom" required />
+                            <input type="text" name="nom" id="nom" required />
                         </div>           
                         <div class="form-group">
                             <label for="prenom">Prénom:<span>*</span></label>
-                            <input type="text" id="prenom" required />
+                            <input type="text" name="prenom" id="prenom" required />
                         </div>          
                         <div class="form-group">
                             <label for="email">Mail:<span>*</span></label>
-                            <input type="email" id="email" required />
+                            <input type="email" name="email" id="email" required />
                         </div>
                     </fieldset>
 
@@ -121,7 +144,7 @@
 
                        <!-- Champs de la zone message -->               
                         <div class="form-group">
-                            <label for="type" id="demande">Type de demande:<span>*</span></label>
+                            <label for="type" name="demande">Type de demande:<span>*</span></label>
                             <select id="demande">
                                 <option> Générale </option>
                                 <option> Professionnelle </option>
@@ -130,11 +153,11 @@
                         </div>       
                         <div class="form-group">
                             <label for="sujet">Sujet:<span>*</span></label>
-                            <input type="text" id="sujet" required />
+                            <input type="text" name="sujet" id="sujet" required />
                         </div>       
                         <div class="form-group">
-                            <label for="message" id="message">Message:<span>*</span></label>
-                            <textarea id="message" rows="7" cols="30" required ></textarea>
+                            <label for="message" id="description">Message:<span>*</span></label>
+                            <textarea name="description" id="description" rows="7" cols="30" required ></textarea>
                         </div>
                     </fieldset>
 

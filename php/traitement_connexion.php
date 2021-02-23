@@ -4,44 +4,38 @@
 require_once('connexion_bdd.php');
 
 // Récupération des données du formulaire
-$id = '';
 $email = $_POST['email'];
 $pwd = $_POST['password'];
-$requete = '';
-$resultat = '';
 $error = '';
 $acces = false;
 
+// Test de non-nullité du champ
+foreach ($_POST as $key => $value) {
+    if (empty($value)) {
+        $error = 'empty';
+    }
+}
 
-// Requete qui récupère un utilisateur selon le mail est indiqué
-$sql = "SELECT `id` FROM `user` WHERE `email`='$email'";
-$requete = $connexion->query($sql);
-$resultat = $requete->fetch();
+// Nettoyage des données
+$email = filter_var($email, FILTER_SANITIZE_EMAIL);
+$pwd = filter_var($pwd, FILTER_SANITIZE_STRING);
+
+// Requete qui récupère un utilisateur selon le mail et le pwd est indiqué
+$result = $connexion->prepare("SELECT * FROM user WHERE email = :email AND pwd = :pwd");
+$result->execute(['email' => $email, 'pwd' => $pwd]);
+$row = $result->fetch(PDO::FETCH_ASSOC);
+
 
 // Test s'il existe un résultat à la requête
-if($resultat != ''){
+if ($row) {
 
-    // Requete pour récupérer toutes les données de l'utilisateur
-    $id = $resultat['id'];
-    $sql = "SELECT * FROM `user` WHERE `id`= $id ";
-    $requete = $connexion->query($sql);
-    $result = $requete->fetch();
+    // accès au site autorisé
+    $acces = true;
+    $error = 'registered';
 
-    // Test du mot de passe retourné par la requete précédente
-    if ($pwd==$result['pwd']) {
-
-        // accès au site autorisé
-        $acces = true;
-        $error= 'registered';
-    } else {
-
-        // Le mot de passe ne correspond pas
-        $error= 'nomatch';
-    }
-
-// Sinon le compte n'existe pas
+    // Sinon le compte n'existe pas
 } else {
-    $error= 'invalide';
+    $error = 'invalide';
 }
 
 // Redirection

@@ -5,3 +5,13 @@ User {
     email VARCHAR(255) NN,
     pwd VARCHAR(255) NN
 }
+
+Msg{
+    id INT PK NN AI,
+    nom VARCHAR(255),
+    prenom VARCHAR(255),
+    email VARCHAR(255),
+    demande VARCHAR(255),
+    sujet VARCHAR(255),
+    description TEXT(32565)
+}
