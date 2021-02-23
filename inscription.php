@@ -76,7 +76,7 @@ if(isset($_GET['message'])){
                             Mon panier</a>
                     </li>
                     <li>
-                        <a href="contact.html">
+                        <a href="contact.php">
                             <i class="fas fa-mail-bulk"></i>
                             Contact
                         </a>

@@ -7,6 +7,7 @@ $class = '';
 $info = '';
 $connexion ='Connexion';
 $lien = "connexion.php";
+$inscript = true;
 
 if (isset($_GET['message'])) {
     if (!empty($_GET['message'])) {
@@ -20,10 +21,12 @@ if (isset($_GET['message'])) {
             case 'msgok';
                 $class = 'success';
                 $info = "Votre message est envoyé !";
+                $inscript = false;
                 break;
             default:
                 $class = 'error';
                 $info = 'Un problème bizarre est survenu…';
+                $inscript = false;
                 break;
         }
     }
@@ -260,7 +263,7 @@ if (isset($_GET['message'])) {
                 </div>
             </section>
 
-            <?php if (empty($class)): ?>
+            <?php if ($inscript == true): ?>
                 <!-- Application inscription -->
                 <section class="bandeau-inscription">
                     <div >
