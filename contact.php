@@ -17,10 +17,6 @@ if(isset($_POST['message'])){
 ?>
 <!-- Fin du traitement du message -->
 
-
-
-
-
 <!DOCTYPE html>
 <html>
     <head>
@@ -145,10 +141,10 @@ if(isset($_POST['message'])){
                        <!-- Champs de la zone message -->               
                         <div class="form-group">
                             <label for="type" name="demande">Type de demande:<span>*</span></label>
-                            <select id="demande">
-                                <option> Générale </option>
-                                <option> Professionnelle </option>
-                                <option> Personnelle </option>
+                            <select id="demande" name="demande">
+                                <option value="gen"> Générale </option>
+                                <option value="pro"> Professionnelle </option>
+                                <option value="perso"> Personnelle </option>
                             </select>
                         </div>       
                         <div class="form-group">

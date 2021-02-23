@@ -17,16 +17,15 @@ if (isset($_GET['message'])) {
                 $info = "Bienvenue !!";
                 $connexion = "Déconnexion";
                 $lien = "index.php";
+                $inscript = false;
                 break;
             case 'msgok';
                 $class = 'success';
                 $info = "Votre message est envoyé !";
-                $inscript = false;
                 break;
             default:
                 $class = 'error';
                 $info = 'Un problème bizarre est survenu…';
-                $inscript = false;
                 break;
         }
     }
