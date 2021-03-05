@@ -42,11 +42,9 @@ if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
 /*******************    FIN TEST DES CHAMPS DU FORMULAIRE    ****************************** */
 
 // Test de l'existence d'un mail dans la base
-
-// Requete qui récupère un utilisateur selon le mail est indiqué
-$result = $connexion->prepare("SELECT * FROM user WHERE email = :email");
-$result->execute(['email' => $email]);
-$row = $result->fetch(PDO::FETCH_ASSOC);
+$row = checkUser($connexion, [
+    'email' => $email,
+]);
 
 if($row){
     $formulaireok = 0;

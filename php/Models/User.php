@@ -1,5 +1,13 @@
 <?php
 
+function checkUser($connexion, $data){
+    // Requete qui récupère un utilisateur selon le mail est indiqué
+    $result = $connexion->prepare("SELECT * FROM user WHERE email = :email");
+    $result->execute(['email' => $data['email']]);
+    $row = $result->fetch(PDO::FETCH_ASSOC);
+    return $row;
+}
+
 function addUser($connexion, $data){
         // Requete d'ajout d'utilisateur
         try {
