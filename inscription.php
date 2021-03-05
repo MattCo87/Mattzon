@@ -1,5 +1,10 @@
 <!-- Traitement du message -->
 <?php 
+session_start();
+if(isset($_SESSION['id'])) {
+    Header('Location: index.php');
+}
+
 $info = '';
 
 if(isset($_GET['message'])){
