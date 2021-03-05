@@ -4,7 +4,7 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
 // On inclut le fichier de configuration pour la BDD
-require_once(__DIR__ . '/../config/bdd-sample.php');
+require_once(__DIR__ . '/../config/bdd.php');
 
 // On établit la connexion
 try {

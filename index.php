@@ -43,7 +43,6 @@ if (isset($_GET['message'])) {
         <!-- Informations destinées au SEO (Search Engine Optimization = référencement naturel) -->
         <title>aMattzon</title>
 
-        <script src="https://www.w3schools.com/lib/w3.js"></script>
         
         <!-- Feuilles de styles -->
         <!-- Ajouter lien du style -->
@@ -53,12 +52,8 @@ if (isset($_GET['message'])) {
 
     <body>
 
-        <div w3-include-html="menu.php"></div>
-        <script>
-            w3.includeHTML();
-        </script> 
-
-
+        <!-- Header inclusion -->
+        <?php include('_header.php'); ?>
 
         <!-- Application main -->
         <main class="app-maincontenu">
