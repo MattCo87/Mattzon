@@ -1,6 +1,7 @@
 <?php
 // Connexion à la base de données
 require_once('connexion_bdd.php');
+require_once('Models/User.php');
 
 // Récupération des données du formulaire
 $email = $_POST['email'];
@@ -19,10 +20,11 @@ foreach ($_POST as $key => $value) {
 $email = filter_var($email, FILTER_SANITIZE_EMAIL);
 $pwd = filter_var($pwd, FILTER_SANITIZE_STRING);
 
-// Requete qui récupère un utilisateur selon le mail et le pwd est indiqué
-$result = $connexion->prepare("SELECT * FROM user WHERE email = :email AND pwd = :pwd");
-$result->execute(['email' => $email, 'pwd' => $pwd]);
-$row = $result->fetch(PDO::FETCH_ASSOC);
+// Vérification de l'utilisateur en base de données
+$row = login($connexion, [
+    'email' => $email,
+    'pwd' => $pwd,
+]);
 
 
 // Test s'il existe un résultat à la requête

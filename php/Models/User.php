@@ -21,3 +21,11 @@ function addUser($connexion, $data){
             die($exception->getMessage());
           }
 }
+
+function login($connexion, $data){
+    // Requete qui récupère un utilisateur selon le mail et le pwd est indiqué
+    $result = $connexion->prepare("SELECT * FROM user WHERE email = :email AND pwd = :pwd");
+    $result->execute(['email' => $data['email'], 'pwd' => $data['pwd']]);
+    $row = $result->fetch(PDO::FETCH_ASSOC);
+    return $row;
+}
