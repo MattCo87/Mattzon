@@ -38,11 +38,17 @@ if ($row) {
     $error = 'invalide';
 }
 
-// Redirection
 if ($acces) {
-    // Vers index en mode connecté
+    // On inscrit l'utilisateur en session
+    session_start();
+    $_SESSION['id'] = $row['id'];
+    $_SESSION['prenom'] = $row['prenom'];
+    $_SESSION['nom'] = $row['nom'];
+    $_SESSION['email'] = $row['email'];
+
+    // Redirection vers index en mode connecté
     Header('Location: ../index.php?message=' . $error);
 } else {
-    // Vers la page de connexion avec message d'erreur
+    // Redirection vers la page de connexion avec message d'erreur
     Header('Location: ../connexion.php?message=' . $error);
 }

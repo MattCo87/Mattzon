@@ -3,11 +3,10 @@
 
 require_once('php/connexion_bdd.php');
 
+session_start();
+
 $class = '';
 $info = '';
-$connexion ='Connexion';
-$lien = "connexion.php";
-$inscript = true;
 
 if (isset($_GET['message'])) {
     if (!empty($_GET['message'])) {
@@ -15,13 +14,14 @@ if (isset($_GET['message'])) {
             case 'registered':
                 $class = 'success';
                 $info = "Bienvenue !!";
-                $connexion = "Déconnexion";
-                $lien = "index.php";
-                $inscript = false;
                 break;
             case 'msgok';
                 $class = 'success';
                 $info = "Votre message est envoyé !";
+                break;
+            case 'disconnected';
+                $class = 'info';
+                $info = "Vous êtes maintenant déconnecté";
                 break;
             default:
                 $class = 'error';
@@ -43,79 +43,22 @@ if (isset($_GET['message'])) {
         <!-- Informations destinées au SEO (Search Engine Optimization = référencement naturel) -->
         <title>aMattzon</title>
 
+        <script src="https://www.w3schools.com/lib/w3.js"></script>
+        
         <!-- Feuilles de styles -->
-
         <!-- Ajouter lien du style -->
-
-
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css" />
         <link rel="stylesheet" href="css/styles.css" />
     </head>
 
     <body>
-        <!-- Application header -->
-        <header class="app-header">
 
-            <!-- Logo du site-->
-            <h1>
-                <a href="index.php"> <span>a</span>Mattzon<span>.fr</span> </a>
-            </h1>
+        <div w3-include-html="menu.php"></div>
+        <script>
+            w3.includeHTML();
+        </script> 
 
-            <!-- Barre de navigation du site-->
-            <nav class="app-mainmenu">
-                <ul class="menu">
-                    <li>
-                        <a href="index.php">
-                            <i class="fas fa-home"></i>
-                            Accueil
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <i class="fas fa-address-book"></i>
-                            Catalogue
-                        </a>
-                    </li>
-                    <li>
-                        <a href= <?php echo $lien; ?>>
-                            <i class="fas fa-power-off"></i>
-                            <?php echo $connexion; ?>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <i class="fas fa-cart-arrow-down"></i> 
-                            Mon panier</a>
-                    </li>
-                    <li>
-                        <a href="contact.php">
-                            <i class="fas fa-mail-bulk"></i>
-                            Contact
-                        </a>
-                    </li>
-                </ul>
-            </nav>
 
-            <!-- Barre de recherche PC -->
-            <div class="barre-recherche-pc">
-                <a href="#">
-                    <i class="fas fa-search"></i>
-                    Recherche
-                </a>
-            </div>
-
-            <!-- Barre de recherche Tablette -->
-            <div class="barre-recherche-tablette">
-                <input type="text" name="recherche" id="rechercher" placeholder="Recherche" size="15">
-            </div>
-
-            <!-- Menu Hamburger -->
-            <div class="hamburger">
-                <a href="#">
-                    <i class="fas fa-bars"></i>
-                </a>
-            </div>
-        </header>
 
         <!-- Application main -->
         <main class="app-maincontenu">
@@ -262,7 +205,7 @@ if (isset($_GET['message'])) {
                 </div>
             </section>
 
-            <?php if ($inscript == true): ?>
+            <?php if(!isset($_SESSION['id'])): ?>
                 <!-- Application inscription -->
                 <section class="bandeau-inscription">
                     <div >

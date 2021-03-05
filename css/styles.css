@@ -325,7 +325,16 @@ p.success {
     border-radius: 1.5rem;;
 }
 
-
+p.info {
+    padding: 0.5rem 1rem;
+    margin: 2rem auto 4rem;
+    width: 40%;
+    text-align: center;
+    font-weight: bold;
+    color: white;
+    background-color: blue;
+    border-radius: 1.5rem;;
+}
 
 
 /* Media query pour les smartphones */
