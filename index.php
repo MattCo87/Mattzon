@@ -213,8 +213,6 @@ if (isset($_GET['message'])) {
         </main>
 
         <!-- Application footer-->
-        <footer class="app-footer">
-            <h2>Footer</h2>
-        </footer>
+        <?php include('_footer.php'); ?>
     </body>
 </html>
