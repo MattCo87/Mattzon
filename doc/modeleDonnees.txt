@@ -6,7 +6,7 @@ User {
     pwd VARCHAR(255) NN
 }
 
-Msg{
+Msg {
     id INT PK NN AI,
     nom VARCHAR(255),
     prenom VARCHAR(255),
@@ -14,4 +14,13 @@ Msg{
     demande VARCHAR(255),
     sujet VARCHAR(255),
     description TEXT(32565)
+}
+
+Product {
+    id INT PK NN AI,
+    name VARCHAR(255) NN,
+    shortdescription VARCHAR(255),
+    description TEXT,
+    image VARCHAR(255),
+    price DECIMAL(10)
 }
