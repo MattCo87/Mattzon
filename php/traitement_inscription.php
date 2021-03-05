@@ -2,6 +2,7 @@
 
 // Connexion à la base de données
 require_once('connexion_bdd.php');
+require_once('Models/User.php');
 
 // Récupération des données du formulaire
 $email = $_POST['email'];
@@ -56,25 +57,13 @@ if($row){
 // Test de la validité finale du formulaire d'inscription et ajout et/ou redirection
 if ($formulaireok == 1) {
 
-    // Requete d'ajout d'utilisateur
-    try {
-        // Début de la transaction
-        $connexion->beginTransaction();
-      
-        // Requête d'insertion
-        $result = $connexion->prepare("INSERT INTO user VALUES (:id, :nom, :prenom, :email, :pwd) ");
-        $result->execute(['id' => NULL, 'nom' => $nom, 'prenom' => $prenom, 'email' => $email, 'pwd' => $pwd]);
-      
-        // Si on arrive ici, alors on exécute la transaction :)
-        $connexion->commit();
-
-      } catch (PDOException $exception) {
-        // On annule la transaction (on remet dans l'état initial)
-        $connexion->rollback();
-      
-        // On gère l'exception
-        die($exception->getMessage());
-      }
+    // Création du user en base de données
+    addUser($connexion, [
+        'nom' => $nom,
+        'prenom' => $prenom,
+        'email' => $email,
+        'pwd' => $pwd,
+    ]);
 
     // Redirection vers la page de connexion
     Header('Location: ../connexion.php?test=' . $error);
