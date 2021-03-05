@@ -47,7 +47,7 @@ if (isset($_GET['message'])) {
         <!-- Feuilles de styles -->
         <!-- Ajouter lien du style -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css" />
-        <link rel="stylesheet" href="css/styles.css" />
+        <link rel="stylesheet" href="assets/css/styles.css" />
     </head>
 
     <body>
@@ -83,7 +83,7 @@ if (isset($_GET['message'])) {
                             title="La Pegasis"
                         >
                             <img
-                                src="img/nike-pegasus.jpg"
+                                src="assets/img/nike-pegasus.jpg"
                                 alt="Pardon je vous la pique 2s"
                             />
                         </a>
@@ -125,7 +125,7 @@ if (isset($_GET['message'])) {
                             title="La Flavius"
                         >
                             <img
-                                src="img/Flavius.jpg"
+                                src="assets/img/Flavius.jpg"
                                 alt="Une création athypique de Flavio"
                             />
                         </a>
@@ -165,7 +165,7 @@ if (isset($_GET['message'])) {
                             title="La JupiTerrien"
                         >
                             <img
-                                src="img/JupiTerrien.jpg"
+                                src="assets/img/JupiTerrien.jpg"
                                 alt="De Jupiter à la Terre"
                             />
                         </a>

@@ -3,6 +3,9 @@
 // Connexion à la base de données
 require_once('connexion_bdd.php');
 
+// Import du modèle Msg
+require_once('Models/Msg.php');
+
 // Récupération des données du formulaire
 var_dump($_POST['nom']);
 $nom  = $_POST['nom'];
@@ -37,27 +40,17 @@ foreach ($_POST as $key => $value) {
 // Test de la validité finale du formulaire d'inscription et ajout et/ou redirection
 if ($formulaireok == 1) {
 
-    // Requete d'ajout de message
-    try {
-        // Début de la transaction
-        $connexion->beginTransaction();
-      
-        // Requête d'insertion
-        $result = $connexion->prepare("INSERT INTO msg VALUES (:id, :nom, :prenom, :email, :demande, :sujet, :descript) ");
-        $result->execute(['id' => NULL, 'nom' => $nom, 'prenom' => $prenom, 'email' => $email, 'demande' => $demande, 'sujet' => $sujet, 'descript' => $descript ]);
-      
-        // Si on arrive ici, alors on exécute la transaction :)
-        $connexion->commit();
+    // Création du message en base de données
+    addMsg($connexion, [
+        'nom' => $nom,
+        'prenom' => $prenom,
+        'email' => $email,
+        'demande' => $demande,
+        'sujet' => $sujet,
+        'descript' => $descript,
+    ]);
 
-      } catch (PDOException $exception) {
-        // On annule la transaction (on remet dans l'état initial)
-        $connexion->rollback();
-      
-        // On gère l'exception
-        die($exception->getMessage());
-      }
-
-        // Redirection vers la page de connexion
+    // Redirection vers la page de connexion
     Header('Location: ../index.php?message=' . $error);
 
 } else {

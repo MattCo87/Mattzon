@@ -1,5 +1,4 @@
 <?php
-
 // Connexion à la base de données
 require_once('connexion_bdd.php');
 

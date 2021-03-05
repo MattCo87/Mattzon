@@ -35,7 +35,7 @@ if(isset($_POST['message'])){
 
 
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css" />
-        <link rel="stylesheet" href="css/styles.css" />
+        <link rel="stylesheet" href="assets/css/styles.css" />
     </head>
 
     <body>
