@@ -61,15 +61,15 @@ if(isset($_POST['message'])){
                         <!-- Champs de la zone coordonnées -->
                         <div class="form-group">
                             <label for="nom">Nom:<span>*</span></label>
-                            <input type="text" name="nom" id="nom" required />
+                            <input type="text" name="nom" id="nom" value="<?php echo (isset($_SESSION['nom']) ? $_SESSION['nom'] : ''); ?>" required />
                         </div>           
                         <div class="form-group">
                             <label for="prenom">Prénom:<span>*</span></label>
-                            <input type="text" name="prenom" id="prenom" required />
+                            <input type="text" name="prenom" id="prenom" value="<?php echo (isset($_SESSION['prenom']) ? $_SESSION['prenom'] : ''); ?>" required />
                         </div>          
                         <div class="form-group">
                             <label for="email">Mail:<span>*</span></label>
-                            <input type="email" name="email" id="email" required />
+                            <input type="email" name="email" id="email" value="<?php echo (isset($_SESSION['email']) ? $_SESSION['email'] : ''); ?>" required />
                         </div>
                     </fieldset>
 
