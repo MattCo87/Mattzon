@@ -1,7 +1,11 @@
 <!-- Traitement du message -->
 <?php
 
+// Connexion à la base de données
 require_once('php/connexion_bdd.php');
+
+// Import du modèle Product
+require_once('php/Models/Product.php');
 
 session_start();
 
@@ -75,47 +79,9 @@ if (isset($_GET['message'])) {
                 <!-- Conteneur des vignettes -->
                 <div class="vignettes">
 
-                    <!-- Vignette produit N°1 -->
-                    <div class="vignette">
-                        <a
-                            href="#"
-                            class="vignette-image"
-                            title="La Pegasis"
-                        >
-                            <img
-                                src="assets/img/nike-pegasus.jpg"
-                                alt="Pardon je vous la pique 2s"
-                            />
-                        </a>
-                        <h3>Pegasis</h3>
-                        <p class="prix">125€</p>
-                        
-                        <!-- Affichage des options de vignette PC -->
-                        <div class="vignette-option-pc">
-                            <p>
-                                <a href="#">En savoir + </a>
-                            </p>
-                            <p>
-                                <a href="#"> 
-                                    Ajouter au panier
-                                </a>
-                            </p>
-                        </div>
-
-                        <!-- Affichage des options de vignette Tablette -->
-                        <div class="vignette-option-tablette">
-                            <p>
-                                <a href="#">
-                                    <i class="fas fa-plus-square"></i>
-                                </a>
-                            </p>
-                            <p>
-                                <a href="#">
-                                    <i class="fas fa-cart-arrow-down"></i> 
-                                </a>
-                            </p>
-                        </div>
-                    </div>
+                    <?php 
+                        include('_vignette.php');
+                    ?>
 
                     <!-- Vignette produit N°2 -->
                     <div class="vignette">
