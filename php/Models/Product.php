@@ -3,8 +3,9 @@
  * Récupération de tous les produits dans la base de données
  */
 function getProducts($connexion) {
-    $result = $connexion->prepare("SELECT * FROM product");
-    $row = $result->fetch(PDO::FETCH_ASSOC);
+    $result = $connexion->prepare("SELECT id FROM product");
+    $result->execute();
+    $row = $result->fetchAll(PDO::FETCH_OBJ);
     return $row;    
 }
 

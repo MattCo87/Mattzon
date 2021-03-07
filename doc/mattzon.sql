@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : ven. 05 mars 2021 à 22:50
+-- Généré le : Dim 07 mars 2021 à 22:03
 -- Version du serveur :  5.7.31
 -- Version de PHP : 7.4.9
 
@@ -88,7 +88,7 @@ CREATE TABLE IF NOT EXISTS `user` (
 --
 
 INSERT INTO `user` (`id`, `prenom`, `nom`, `email`, `pwd`) VALUES
-(1, 'test', 'test', 'test@test.com', 'test'),
+(1, 'testPrenom', 'testNom', 'test@test.com', 'test'),
 (2, 'Matt', 'Co', '87700a@gmail.com', 'mattco');
 COMMIT;
 

@@ -17,7 +17,7 @@ if (isset($_GET['message'])) {
         switch ($_GET['message']) {
             case 'registered':
                 $class = 'success';
-                $info = "Bienvenue !!";
+                $info = "Bonjour " . $_SESSION['prenom'];
                 break;
             case 'msgok';
                 $class = 'success';
@@ -65,13 +65,10 @@ if (isset($_GET['message'])) {
             <!-- Section offre du jour -->
             <section class="offres-du-jour">
 
-                <?php if (!empty($class)): ?>
-                    <!-- Affichage du message -->
-                    <p class="<?php echo $class; ?>">
-                        <?php echo $info; ?>
-                    </p>
-                    <!-- Fin Affichage du message -->
-                <?php endif; ?>
+                <!-- Affichage du message du status de connexion -->
+                <?php 
+                    include('_msgconnexion.php');
+                ?>                
 
                 <!-- Titre des offres du jour -->
                 <h2>Les offres du jour</h2>
@@ -82,86 +79,6 @@ if (isset($_GET['message'])) {
                     <?php 
                         include('_vignette.php');
                     ?>
-
-                    <!-- Vignette produit N°2 -->
-                    <div class="vignette">
-                        <a
-                            href="#"
-                            class="vignette-image"
-                            title="La Flavius"
-                        >
-                            <img
-                                src="assets/img/Flavius.jpg"
-                                alt="Une création athypique de Flavio"
-                            />
-                        </a>
-                        <h3>Flavius</h3>
-                        <p class="prix">59,99€</p>
-
-                        <!-- Affichage des options de vignette PC -->
-                        <div class="vignette-option-pc">
-                            <p>
-                                <a href="#">En savoir + </a>
-                            </p>
-                            <p>
-                                <a href="#"> Ajouter au panier </a>
-                            </p>
-                        </div>
-
-                        <!-- Affichage des options de vignette Tablette -->
-                        <div class="vignette-option-tablette">
-                            <p>
-                                <a href="#">
-                                    <i class="fas fa-plus-square"></i>
-                                </a>
-                            </p>
-                            <p>
-                                <a href="#">
-                                    <i class="fas fa-cart-arrow-down"></i> 
-                                </a>
-                            </p>
-                        </div>
-                    </div>
-
-                    <!-- Vignette produit N°3 -->
-                    <div class="vignette">
-                        <a
-                            href="#"
-                            class="vignette-image"
-                            title="La JupiTerrien"
-                        >
-                            <img
-                                src="assets/img/JupiTerrien.jpg"
-                                alt="De Jupiter à la Terre"
-                            />
-                        </a>
-                        <h3>JupiTerrien</h3>
-                        <p class="prix">39,99€</p>
-
-                        <!-- Affichage des options de vignette PC -->
-                        <div class="vignette-option-pc">
-                            <p>
-                                <a href="#">En savoir + </a>
-                            </p>
-                            <p>
-                                <a href="#"> Ajouter au panier </a>
-                            </p>
-                        </div>
-
-                        <!-- Affichage des options de vignette Tablette -->
-                        <div class="vignette-option-tablette">
-                            <p>
-                                <a href="#">
-                                    <i class="fas fa-plus-square"></i>
-                                </a>
-                            </p>
-                            <p>
-                                <a href="#">
-                                    <i class="fas fa-cart-arrow-down"></i> 
-                                </a>
-                            </p>
-                        </div>
-                    </div>
                     </div>
                 </div>
             </section>

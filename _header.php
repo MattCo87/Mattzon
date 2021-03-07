@@ -32,7 +32,7 @@
                 <li>
                     <a href="php/traitement_deconnexion.php">
                         <i class="fas fa-power-off"></i>
-                        Déconnexion
+                        <?php echo $_SESSION['prenom']." ".$_SESSION['nom']; ?>
                     </a>
                 </li>
             <?php endif; ?>
