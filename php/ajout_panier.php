@@ -43,6 +43,7 @@ if($id && is_int($id)) {
     $_SESSION['panier'] = $panier;
 }
 
+// On redirige vers la page d'accueil
 header('Location: ../index.php');
 
 
