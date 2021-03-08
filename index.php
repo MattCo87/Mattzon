@@ -1,6 +1,4 @@
-<!-- Traitement du message -->
 <?php
-
 // Connexion à la base de données
 require_once('php/connexion_bdd.php');
 
@@ -8,34 +6,7 @@ require_once('php/connexion_bdd.php');
 require_once('php/Models/Product.php');
 
 session_start();
-
-$class = '';
-$info = '';
-
-if (isset($_GET['message'])) {
-    if (!empty($_GET['message'])) {
-        switch ($_GET['message']) {
-            case 'registered':
-                $class = 'success';
-                $info = "Bonjour " . $_SESSION['prenom'];
-                break;
-            case 'msgok';
-                $class = 'success';
-                $info = "Votre message est envoyé !";
-                break;
-            case 'disconnected';
-                $class = 'info';
-                $info = "Vous êtes maintenant déconnecté";
-                break;
-            default:
-                $class = 'error';
-                $info = 'Un problème bizarre est survenu…';
-                break;
-        }
-    }
-}
 ?>
-<!-- Fin du traitement du message -->
 
 <!DOCTYPE html>
 <html>
