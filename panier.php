@@ -55,7 +55,7 @@ require_once('php/Models/Product.php');
                             <a href="#">En savoir + </a>
                         </p>
                         <p>
-                            <a href="#">
+                            <a href="php/suppression_panier.php?id=<?php echo $item['id']; ?>">
                                 Enlever du panier
                             </a>
                         </p>
