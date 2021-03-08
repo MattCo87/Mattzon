@@ -38,7 +38,7 @@
             <?php endif; ?>
             
             <li>
-                <a href="#">
+                <a href="./panier.php">
                     <i class="fas fa-cart-arrow-down"></i> 
                     Mon panier</a>
             </li>
