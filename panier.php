@@ -38,31 +38,35 @@ require_once('php/Models/Product.php');
         <section class="panier">
             <h2>Mon panier</h2>
             <?php if(isset($_SESSION['panier'])): ?>
-            <div class="vignettes">
-                <?php foreach($_SESSION['panier'] as $key => $item): ?>
-                <?php $product = getProduct($connexion, $item['id']); ?>
-                <div class="vignette">
-                    <a href="#" class="vignette-image" title="<?php echo ($product['name']); ?>">
-                        <img src="assets/img/<?php echo ($product['image']); ?>" alt="Pardon je vous la pique 2s" />
-                    </a>
-                    <h3><?php echo ($product['name']); ?></h3>
-                    <p><?php echo $item['qte']; ?> x <?php echo $product['price']; ?>€</p>
-                    <p class="prix"><?php echo $product['price'] * $item['qte']; ?>€</p>
+                <?php if(!empty($_SESSION['panier'])): ?>
+                <div class="vignettes">
+                    <?php foreach($_SESSION['panier'] as $key => $item): ?>
+                    <?php $product = getProduct($connexion, $item['id']); ?>
+                    <div class="vignette">
+                        <a href="#" class="vignette-image" title="<?php echo ($product['name']); ?>">
+                            <img src="assets/img/<?php echo ($product['image']); ?>" alt="Pardon je vous la pique 2s" />
+                        </a>
+                        <h3><?php echo ($product['name']); ?></h3>
+                        <p><?php echo $item['qte']; ?> x <?php echo $product['price']; ?>€</p>
+                        <p class="prix"><?php echo $product['price'] * $item['qte']; ?>€</p>
 
-                    <!-- Affichage des options de vignette PC -->
-                    <div class="vignette-option-pc">
-                        <p>
-                            <a href="#">En savoir + </a>
-                        </p>
-                        <p>
-                            <a href="php/suppression_panier.php?id=<?php echo $item['id']; ?>">
-                                Enlever du panier
-                            </a>
-                        </p>
+                        <!-- Affichage des options de vignette PC -->
+                        <div class="vignette-option-pc">
+                            <p>
+                                <a href="#">En savoir + </a>
+                            </p>
+                            <p>
+                                <a href="php/suppression_panier.php?id=<?php echo $item['id']; ?>">
+                                    Enlever du panier
+                                </a>
+                            </p>
+                        </div>
                     </div>
+                    <?php endforeach; ?>
                 </div>
-                <?php endforeach; ?>
-            </div>
+                <?php else: ?>
+                <p class="info">Votre panier est vide.</p>
+                <?php endif; ?>
             <?php else: ?>
             <p class="info">Votre panier est vide.</p>
             <?php endif; ?>

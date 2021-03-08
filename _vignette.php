@@ -30,7 +30,7 @@ foreach ($tabProducts as $value) {
                 <a href="#">En savoir + </a>
             </p>
             <p>
-                <a href="php/ajout_panier?id=<?php echo $value; ?>">
+                <a href="php/ajout_panier.php?id=<?php echo $value; ?>">
                     Ajouter au panier
                 </a>
             </p>
