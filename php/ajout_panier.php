@@ -4,14 +4,22 @@
 session_start();
 
 // Je récupère l'ID de l'article
-$id = (isset($_GET['id']) ? $_GET['id'] : false);
+$id = (isset($_GET['id']) ? (int)$_GET['id'] : false);
 
-if(is_int($id)) {
-  // On ajoute au panier
-  var_dump($id);
+if($id && is_int($id)) {
+
+    $panier = [
+        [ 
+            'id' => $id,
+            'qte' => 1,
+        ],
+    ];
+
+    // On ajoute au panier
+    $_SESSION['panier'] = $panier;
 
 }
 
-// Redirection vers l'accueil
+header('Location: ../index.php');
 
 

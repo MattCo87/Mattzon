@@ -33,6 +33,7 @@ session_start();
             <section class="panier">
                 <h2> panier
                 </h2>
+                <?php var_dump($_SESSION['panier']); ?>
             </section>
         </main>
 
