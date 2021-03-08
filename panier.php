@@ -31,9 +31,14 @@ session_start();
         <!-- Application main -->
         <main class="app-maincontenu">
             <section class="panier">
-                <h2> panier
-                </h2>
-                <?php var_dump($_SESSION['panier']); ?>
+                <h2>Mon panier</h2>
+                <?php if(isset($_SESSION['panier'])): ?>
+                    <?php foreach($_SESSION['panier'] as $key => $item): ?>
+                        <p>produit #<?php echo $item['id']; ?> : <?php echo $item['qte']; ?></p>
+                    <?php endforeach; ?>
+                <?php else: ?>
+                    <p class="info">Votre panier est vide.</p>
+                <?php endif; ?>
             </section>
         </main>
 
