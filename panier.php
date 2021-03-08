@@ -47,7 +47,14 @@ require_once('php/Models/Product.php');
                             <img src="assets/img/<?php echo ($product['image']); ?>" alt="Pardon je vous la pique 2s" />
                         </a>
                         <h3><?php echo ($product['name']); ?></h3>
-                        <p><?php echo $item['qte']; ?> x <?php echo $product['price']; ?>€</p>
+
+                        <?php for ($i = 0; $i <= $item['qte']; $i++): ?>
+                            <p>
+                                1x <?php echo $product['price']; ?>€
+                                <a href="#"><i class="fas fa-trash"></i></a>
+                            </p>
+                        <?php endfor ?>
+                       
                         <p class="prix"><?php echo $product['price'] * $item['qte']; ?>€</p>
 
                         <!-- Affichage des options de vignette PC -->
