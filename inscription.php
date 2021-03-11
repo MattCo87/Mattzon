@@ -18,7 +18,7 @@
         <?php include('_header.php'); ?>
 
         <main class="app-main">
-            <div class="container   ">
+            <div class="container-fluid">
                 <header>
                     <h1 class="bg-light">Créez votre compte</h1>
                 </header>
