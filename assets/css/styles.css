@@ -19,6 +19,10 @@ h2 {
     text-align: center;
 }
 
+.nomPrix {
+    font-size : 1.5rem;
+}
+
 /* HEADER */
 .app-header {
     padding: 0 1.5rem;
@@ -141,6 +145,72 @@ ul.menu a {
     font-size: 15px;
 }
 
+
+/* *********************************************   MATT   */
+
+
+.etatPanier p {
+    margin: 0 auto;
+    display: flex;
+}
+
+#quantitePanier {
+    display: block;
+    text-align: center;
+    font-size: 50px;
+    /* Bord gauche/top */
+    border-top-left-radius: 1.5rem;
+    /* Bord droite/top */
+    border-top-right-radius: 1.5rem;
+    /* Marge du bas */
+    margin-bottom: 2rem;
+}
+
+.boutonsPanier a {
+    text-decoration: none;
+    color: white;
+    align-items :baseline;
+}
+
+.boutonsPanier button[type="submit"] {
+    /* Pas de bordure */
+    border : none;
+    /* Taille du bouton */
+    width: 40%;
+    /* Couleur du texte */
+    color: white;
+    /* Taille de police */
+    font-size: 3rem;
+    /* Margin gauche */
+    margin-left: 0.50rem;
+    /* Fond du bouton */
+    background-color: green;
+    /* Bord bas/droite */
+    border-bottom-right-radius: 1.5rem;
+    /* Ombre */
+    /*box-shadow: 8px 8px 8px rgb(1, 199, 1);*/
+}
+
+.boutonsPanier button[type="cancel"] {
+    /* Pas de bordure */
+    border : none;
+    /* Taille du bouton */
+    width: 40%;
+    /* Couleur du texte */
+    color: white;
+    /* Taille de police */
+    font-size: 3rem;
+    /* Margin droite */
+    margin-right: 0.5rem;
+    /* Fond du bouton */
+    background-color: orangered;
+    /* Bord bas/gauche */
+    border-bottom-left-radius: 1.5rem;
+    /* Ombre */
+    /*box-shadow: -8px 8px 8px orangered;*/
+}
+
+/* *****************************************   FIN MATT  */
 .vignette .vignette-option-pc a {
     text-decoration: none;
     color: red;

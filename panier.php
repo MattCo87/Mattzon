@@ -1,4 +1,4 @@
-<?php 
+<?php
 session_start();
 
 // Connexion à la base de données
@@ -37,45 +37,78 @@ require_once('php/Models/Product.php');
     <main class="app-maincontenu">
         <section class="panier">
             <h2>Mon panier</h2>
-            <?php if(isset($_SESSION['panier'])): ?>
-                <?php if(!empty($_SESSION['panier'])): ?>
-                <div class="vignettes">
-                    <?php foreach($_SESSION['panier'] as $key => $item): ?>
-                    <?php $product = getProduct($connexion, $item['id']); ?>
-                    <div class="vignette">
-                        <a href="#" class="vignette-image" title="<?php echo ($product['name']); ?>">
-                            <img src="assets/img/<?php echo ($product['image']); ?>" alt="Pardon je vous la pique 2s" />
-                        </a>
-                        <h3><?php echo ($product['name']); ?></h3>
+            <?php if (isset($_SESSION['panier'])) : ?>
+                <?php if (!empty($_SESSION['panier'])) : ?>
+                    <div class="vignettes">
+                        <?php foreach ($_SESSION['panier'] as $key => $item) : ?>
+                            <?php $product = getProduct($connexion, $item['id']); ?>
+                            <div class="vignette">
+                                <a href="#" class="vignette-image" title="<?php echo ($product['name']); ?>">
+                                    <img src="assets/img/<?php echo ($product['image']); ?>" alt="Pardon je vous la pique 2s" />
+                                </a>
+                                <div class="nomPrix">
+                                    <p>
+                                        <?php echo ($product['name']); ?>
+                                        <?php echo ($product['price'] . "€"); ?>
+                                    </p>
+                                </div>
 
-                        <?php for ($i = 0; $i <= $item['qte']; $i++): ?>
+                                <!--        TEST MATT  -->
+                                <div class="etatPanier">
+                                    <p id="quantitePanier">
+                                        X&nbsp; <?php echo ($item['qte']); ?>
+                                    </p>
+                                    <p class="boutonsPanier">
+
+                                        <button type="cancel">
+                                            <a href="php/modifierqte_panier.php?act=false&id=<?php echo $item['id']; ?>">
+                                                <i class="fas fa-minus"></i>
+                                            </a>
+                                        </button>
+
+
+                                        <button type="submit">
+                                            <a href="php/modifierqte_panier.php?act=true&id=<?php echo $item['id']; ?>">
+                                                <i class="fas fa-plus"></i>
+                                            </a>
+                                        </button>
+
+                                    </p>
+                                </div>
+
+                                <!--        FIN TEST MATT -->
+
+
+
+                                <?php  /* for ($i = 0; $i < $item['qte']; $i++): ?>
                             <p>
                                 1x <?php echo $product['price']; ?>€
                                 <a href="#"><i class="fas fa-trash"></i></a>
                             </p>
-                        <?php endfor ?>
-                       
-                        <p class="prix"><?php echo $product['price'] * $item['qte']; ?>€</p>
+                        <?php endfor */ ?>
 
-                        <!-- Affichage des options de vignette PC -->
-                        <div class="vignette-option-pc">
-                            <p>
-                                <a href="#">En savoir + </a>
-                            </p>
-                            <p>
-                                <a href="php/suppression_panier.php?id=<?php echo $item['id']; ?>">
-                                    Enlever du panier
-                                </a>
-                            </p>
-                        </div>
+
+                                <p class="prix"><?php echo $product['price'] * $item['qte']; ?>€</p>
+
+                                <!-- Affichage des options de vignette PC -->
+                                <div class="vignette-option-pc">
+                                    <p>
+                                        <a href="#">En savoir + </a>
+                                    </p>
+                                    <p>
+                                        <a href="php/suppression_panier.php?id=<?php echo $item['id']; ?>">
+                                            Enlever du panier
+                                        </a>
+                                    </p>
+                                </div>
+                            </div>
+                        <?php endforeach; ?>
                     </div>
-                    <?php endforeach; ?>
-                </div>
-                <?php else: ?>
-                <p class="info">Votre panier est vide.</p>
+                <?php else : ?>
+                    <p class="info">Votre panier est vide.</p>
                 <?php endif; ?>
-            <?php else: ?>
-            <p class="info">Votre panier est vide.</p>
+            <?php else : ?>
+                <p class="info">Votre panier est vide.</p>
             <?php endif; ?>
         </section>
     </main>
