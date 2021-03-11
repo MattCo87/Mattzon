@@ -53,7 +53,7 @@ require_once('php/Models/Product.php');
                                     </p>
                                 </div>
 
-                                <!--        TEST MATT  -->
+                                <!--        Affichage du panier selon l'ID  -->
                                 <div class="etatPanier">
                                     <p id="quantitePanier">
                                         X&nbsp; <?php echo ($item['qte']); ?>
@@ -75,18 +75,6 @@ require_once('php/Models/Product.php');
 
                                     </p>
                                 </div>
-
-                                <!--        FIN TEST MATT -->
-
-
-
-                                <?php  /* for ($i = 0; $i < $item['qte']; $i++): ?>
-                            <p>
-                                1x <?php echo $product['price']; ?>€
-                                <a href="#"><i class="fas fa-trash"></i></a>
-                            </p>
-                        <?php endfor */ ?>
-
 
                                 <p class="prix"><?php echo $product['price'] * $item['qte']; ?>€</p>
 
