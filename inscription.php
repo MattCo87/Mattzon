@@ -18,7 +18,82 @@
         <?php include('_header.php'); ?>
 
         <main class="app-main">
-            
+            <div class="container   ">
+                <header>
+                    <h1 class="bg-light">Créez votre compte</h1>
+                </header>
+            </div>
+
+            <div class="container my-5">
+                <form class="app-form">
+                    <fieldset>
+                        <legend class="bg-light">Vos identifiants</legend>
+
+                        <div class="row mb-3">
+                            <div class="col-3">
+                                <label for="email">Votre adresse e-mail *</label>
+                            </div>
+                            <div class="col">
+                                <input type="email" id="email" name="email" class="form-control" required />
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <div class="col-3">
+                                <label for="password">Votre mot de passe *</label>
+                            </div>
+                            <div class="col">
+                                <input type="password" id="password" name="password" class="form-control" required />
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <div class="col-3">
+                                <label for="passwordConfirm">Confirmation *</label>
+                            </div>
+                            <div class="col">
+                                <input type="password" id="passwordConfirm" name="passwordConfirm" class="form-control" required />
+                            </div>
+                        </div>
+
+                    </fieldset>
+
+                    <hr />
+
+                    <fieldset>
+                        <legend class="bg-light">Vos informations personnelles</legend>
+
+                        <div class="row mb-3">
+                            <div class="col-3">
+                                <label for="firstname">Votre prénom</label>
+                            </div>
+                            <div class="col">
+                                <input type="text" id="firstname" name="firstname" class="form-control" />
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <div class="col-3">
+                                <label for="firstname">Votre nom</label>
+                            </div>
+                            <div class="col">
+                                <input type="text" id="lastname" name="lastname" class="form-control" />
+                            </div>
+                        </div>
+                    </fieldset>
+
+                    <hr />
+
+                    <div class="row">
+                        <div class="col text-center">
+                            <button type="cancel" class="btn btn-link">Effacer</button>
+                        </div>
+                        <div class="col text-center">
+                            <button type="submit" class="btn btn-primary ">Créer mon compte</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
         </main>
 
         <?php include('_footer.php'); ?>
