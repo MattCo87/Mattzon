@@ -1,3 +1,5 @@
 <footer class="app-footer bg-dark text-light">
-    <p class="copyrights">©2020 Matthieu Coeffe.</p>
+    <div class="container-fluid">
+        <p class="copyrights">©2020 Matthieu Coeffe.</p>
+    </div>
 </footer>
