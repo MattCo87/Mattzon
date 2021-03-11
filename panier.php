@@ -1,108 +1,26 @@
-<?php
-session_start();
-
-// Connexion à la base de données
-require_once('php/connexion_bdd.php');
-
-// Import du modèle Product
-require_once('php/Models/Product.php');
-
-?>
-
 <!DOCTYPE html>
-<html>
+<html lang="fr">
+    <head>
+        <meta charset="utf8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-<head>
-    <!-- Informations destinées au navigateur -->
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Mon panier - aMattzon</title>
+        <meta name="description" content="Blablabla…" />
 
-    <!-- Informations destinées au SEO (Search Engine Optimization = référencement naturel) -->
-    <title>aMattzon : Panier</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+        <script src="https://kit.fontawesome.com/b916232238.js" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="assets/css/styles.css" />
 
-    <!-- Feuilles de styles -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous" defer></script>
+    </head>
 
-    <!-- Ajouter lien du style -->
+    <body>
+        <?php include('_header.php'); ?>
 
+        <main class="app-main">
+            
+        </main>
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css" />
-    <link rel="stylesheet" href="assets/css/styles.css" />
-</head>
-
-<body>
-    <!-- Header inclusion -->
-    <?php include('_header.php'); ?>
-
-    <!-- Application main -->
-    <main class="app-maincontenu">
-        <section class="panier">
-            <h2>Mon panier</h2>
-            <?php if (isset($_SESSION['panier'])) : ?>
-                <?php if (!empty($_SESSION['panier'])) : ?>
-                    <div class="vignettes">
-                        <?php foreach ($_SESSION['panier'] as $key => $item) : ?>
-                            <?php $product = getProduct($connexion, $item['id']); ?>
-                            <div class="vignette">
-                                <a href="#" class="vignette-image" title="<?php echo ($product['name']); ?>">
-                                    <img src="assets/img/<?php echo ($product['image']); ?>" alt="Pardon je vous la pique 2s" />
-                                </a>
-                                <div class="nomPrix">
-                                    <p>
-                                        <?php echo ($product['name']); ?>
-                                        <?php echo ($product['price'] . "€"); ?>
-                                    </p>
-                                </div>
-
-                                <!--        Affichage du panier selon l'ID  -->
-                                <div class="etatPanier">
-                                    <p id="quantitePanier">
-                                        X&nbsp; <?php echo ($item['qte']); ?>
-                                    </p>
-                                    <p class="boutonsPanier">
-
-                                        <button type="cancel">
-                                            <a href="php/modifierqte_panier.php?act=false&id=<?php echo $item['id']; ?>">
-                                                <i class="fas fa-minus"></i>
-                                            </a>
-                                        </button>
-
-
-                                        <button type="submit">
-                                            <a href="php/modifierqte_panier.php?act=true&id=<?php echo $item['id']; ?>">
-                                                <i class="fas fa-plus"></i>
-                                            </a>
-                                        </button>
-
-                                    </p>
-                                </div>
-
-                                <p class="prix"><?php echo $product['price'] * $item['qte']; ?>€</p>
-
-                                <!-- Affichage des options de vignette PC -->
-                                <div class="vignette-option-pc">
-                                    <p>
-                                        <a href="#">En savoir + </a>
-                                    </p>
-                                    <p>
-                                        <a href="php/suppression_panier.php?id=<?php echo $item['id']; ?>">
-                                            Enlever du panier
-                                        </a>
-                                    </p>
-                                </div>
-                            </div>
-                        <?php endforeach; ?>
-                    </div>
-                <?php else : ?>
-                    <p class="info">Votre panier est vide.</p>
-                <?php endif; ?>
-            <?php else : ?>
-                <p class="info">Votre panier est vide.</p>
-            <?php endif; ?>
-        </section>
-    </main>
-
-    <!-- Application footer-->
-    <?php include('_footer.php'); ?>
-</body>
-
+        <?php include('_footer.php'); ?>
+    </body>
 </html>

@@ -1,3 +1,3 @@
 <footer class="app-footer">
-    <h2>Footer</h2>
+    <p class="copyrights">©2020 Matthieu Coeffe.</p>
 </footer>
