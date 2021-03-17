@@ -40,7 +40,7 @@ if (!empty($_POST)) {
         <main class="app-main">
             <div class="container-fluid">
                 <header>
-                    <h1 class="bg-light">Créez votre compte</h1>
+                    <h1 class="bg-light">Créez votre compte  <?php echo $registered; ?></h1>
                 </header>
             </div>
 
