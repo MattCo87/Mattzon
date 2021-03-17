@@ -45,7 +45,7 @@ if (!empty($_POST)) {
             </div>
 
             <div class="container my-5">
-                <form class="app-form">
+                <form class="app-form" method="post" action="#">
                     <fieldset>
                         <legend class="bg-light">Vos identifiants</legend>
 
