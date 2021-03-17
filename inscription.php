@@ -1,3 +1,23 @@
+<?php
+
+// On inclut la classe User
+require_once('php/entities/User.php');
+
+// Si les champs d'inscription sont remplis
+$registered = '';
+if (!empty($_POST)) {
+    // Ajout d'un user
+    $user = new User();
+    $registered = $user->addUser([
+        'nom' => $_POST['firstname'],
+        'prenom' => $_POST['lastname'],
+        'email' => $_POST['email'],
+        'password' => $_POST['password'],
+        'passwordConfirm' => $_POST['passwordConfirm'],
+    ]);
+}
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
     <head>
