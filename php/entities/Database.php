@@ -1,5 +1,6 @@
 <?php
 
+
 class Database {
     private $servname;
     private $dbname;
@@ -7,11 +8,12 @@ class Database {
     private $pass;
 
     public function __construct() {
+        require_once("config/bdd.php");
         // On renseigne les valeurs de nos propriétés
-        $this->servname = 'localhost';
-        $this->dbname = 'mattzon';
-        $this->user = 'root';
-        $this->pass = '';
+        $this->servname = $servname;
+        $this->dbname = $dbname;
+        $this->user = $user;
+        $this->pass = $pass;
     }
 
 
