@@ -3,7 +3,7 @@
 
 class Database
 {
-    protected $dbco;
+    public $dbco;
 
     public function __construct()
     {

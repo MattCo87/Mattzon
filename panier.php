@@ -18,7 +18,7 @@
         <?php include('_header.php'); ?>
 
         <main class="app-main">
-            
+
         </main>
 
         <?php include('_footer.php'); ?>

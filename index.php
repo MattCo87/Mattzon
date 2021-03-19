@@ -3,8 +3,9 @@ require_once('php/entities/User.php');
 
 // Connexion d'un utilisateur
 $userObj = new User();
-$userData = $userObj->checkUserExists('john@doe.com', 'testz');
+$userData = $userObj->checkUserExists('john@doe.com', 'test');
 if ($userData) {
+    // On instancie un utilisateur avec l'id récupéré
     $user = new User($userData['id']);
 } else {
     $user = null;
