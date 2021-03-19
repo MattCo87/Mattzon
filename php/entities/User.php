@@ -3,7 +3,6 @@ require_once('Database.php');
 
 class User extends Database
 {
-    // Propriétés
     private $id;
     private $prenom;
     private $nom;
@@ -13,9 +12,55 @@ class User extends Database
     /**
      * Constructeur de la classe User
      */
-    public function __construct()
+    public function __construct($id = false)
     {
         parent::__construct();
+        
+        if ($id) {
+            $userData = $this->getUser($id);
+
+            if ($userData) {
+                $this->id = $userData['id'];
+                $this->prenom = $userData['prenom'];
+                $this->nom = $userData['nom'];
+                $this->email = $userData['email'];
+                $this->pwd = $userData['pwd'];
+            } else {
+                return false;
+            }
+        }
+    }
+
+    /**
+     * Get user id
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Get user firstname
+     */
+    public function getPrenom()
+    {
+        return $this->prenom;
+    }
+
+    /**
+     * Get user lastname
+     */
+    public function getNom()
+    {
+        return $this->nom;
+    }
+
+    /**
+     * Get user email
+     */
+    public function getEmail()
+    {
+        return $this->email;
     }
 
     /**
@@ -23,84 +68,99 @@ class User extends Database
      */
     public function addUser($data)
     {
-        // Connexion à la BDD
-        $connexion = $this->connection();
+        // On teste les valeurs
+        $error = $this->validateFormData($data);
 
-        // On test les valeurs et nettoie le $POST
-        $registered = $this->sanitizeUser($data);
+        if (!$error) {
+            // Pas d'erreur : on nettoie les données
+            $data = $this->sanitizeFormData($data);
 
-        if (!$registered) {
-            $registered = "success";
-            // Requete d'ajout d'utilisateur
-            try {
-                // Début de la transaction
-                $connexion->beginTransaction();
+            // Vérification de l'existence de l''utilisateur
+            if (!$this->checkUserExists($data['email'])) {
+                // L'utilisateur n'existe pas déjà : on le crée
+                try {
+                    // Début de la transaction
+                    $this->dbco->beginTransaction();
 
-                // Requête d'insertion
-                $req = $connexion->prepare("INSERT INTO user VALUES (:id, :nom, :prenom, :email, :pwd) ");
-                $req->execute(['id' => NULL, 'nom' => $data['nom'], 'prenom' => $data['prenom'], 'email' => $data['email'], 'pwd' => $data['password']]);
+                    // Requête d'insertion
+                    $req = $this->dbco->prepare("INSERT INTO user(prenom, nom, email, pwd) VALUES (:prenom, :nom, :email, :pwd) ");
+                    $req->execute([
+                        'nom' => $data['nom'],
+                        'prenom' => $data['prenom'],
+                        'email' => $data['email'],
+                        'pwd' => $data['password']
+                    ]);
 
-                // Si on arrive ici, alors on exécute la transaction :)
-                $connexion->commit();
+                    // Si on arrive ici, alors on exécute la transaction :)
+                    $this->dbco->commit();
+                } catch (PDOException $exception) {
+                    // On annule la transaction (on remet dans l'état initial)
+                    $$this->dbco->rollback();
 
-            } catch (PDOException $exception) {
-                // On annule la transaction (on remet dans l'état initial)
-                $connexion->rollback();
-
-                // On gère l'exception
-                die($exception->getMessage());
+                    // On gère l'exception
+                    die($exception->getMessage());
+                }
+            } else {
+                // Erreur : l'utilisateur existe déjà
+                return 'userexists';
             }
+        } else {
+            // Erreur de validation des données du formulaire
+            return $error;
         }
-        return $registered;
+
+        return false;
     }
 
-
     /**
-     * Initialisation d'un utilisateur
+     * Validation des données du formulaire
      */
-    public function sanitizeUser($data)
+    public function validateFormData($data)
     {
-        // Nettoyage des données
-        $nom = filter_var($data['nom'], FILTER_SANITIZE_STRING);
-        $prenom = filter_var($data['prenom'], FILTER_SANITIZE_STRING);
-        $email = filter_var($data['email'], FILTER_SANITIZE_EMAIL);
-        $password = filter_var($data['password'], FILTER_SANITIZE_STRING);
-        $passwordConfirm = filter_var($data['passwordConfirm'], FILTER_SANITIZE_STRING);
-
-        $error = '';
-
-        /*******************    TEST DES CHAMPS DU FORMULAIRE    ****************************** */
         // Test de la confirmation du mot de passe
-        if ($password != $passwordConfirm) {
-            $error = 'password';
+        if ($data['password'] != $data['passwordConfirm']) {
+            return 'passwordconfirm';
         }
         // Test de la validité de l'email
-        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            $error = 'email';
-        }
-        /*******************    FIN TEST DES CHAMPS DU FORMULAIRE    ****************************** */
- 
-        // Test de l'existence d'un mail dans la base
-        if ($this->checkUser($email)) {
-            $error = 'already';
+        if (!filter_var($data['email'], FILTER_VALIDATE_EMAIL)) {
+            return 'notanemail';
         }
 
-        return $error;
+        // Pas d'erreur
+        return false;
     }
 
     /**
-     * Récupération des données d'un utilisateur en BDD par son mail
+     * Nettoyage des données du formulaire
      */
-    public function checkUser($email)
+    public function sanitizeFormData($data)
     {
-        // Connexion à la BDD
-        $dbco = $this->connection();
+        $data['nom'] = filter_var($data['nom'], FILTER_SANITIZE_STRING);
+        $data['prenom'] = filter_var($data['prenom'], FILTER_SANITIZE_STRING);
+        $data['email'] = filter_var($data['email'], FILTER_SANITIZE_EMAIL);
+        $data['password'] = filter_var($data['password'], FILTER_SANITIZE_STRING);
+        $data['passwordConfirm'] = filter_var($data['passwordConfirm'], FILTER_SANITIZE_STRING);
 
+        return $data;
+    }
+
+    /**
+     * Récupération des données d'un utilisateur en BDD par son mail et/ou son password
+     */
+    public function checkUserExists($email, $password = null)
+    {
         // Récupération des données en bdd
-        $req = $dbco->prepare("SELECT * FROM user where email=:email");
-        $req->execute([
+        $params = [
             'email' => $email,
-        ]);
+        ];
+        $sqlString = "SELECT * FROM user where email=:email";
+        if ($password) {
+            $sqlString .= " AND pwd = :pwd";
+            $params['pwd'] = $password;
+        }
+
+        $req = $this->dbco->prepare($sqlString);
+        $req->execute($params);
 
         // Mise des résultats dans un tableau tout propre tout beau
         $result = $req->fetch(PDO::FETCH_ASSOC);
@@ -114,11 +174,8 @@ class User extends Database
      */
     public function getUser($id)
     {
-        // Connexion à la BDD
-        $dbco = $this->connection();
-
         // Récupération des données en bdd
-        $req = $dbco->prepare('SELECT * FROM user where id=:id;');
+        $req = $this->dbco->prepare('SELECT * FROM user where id=:id;');
         $req->execute([
             'id' => $id,
         ]);

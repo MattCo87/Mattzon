@@ -1,3 +1,16 @@
+<?php
+require_once('php/entities/User.php');
+
+// Connexion d'un utilisateur
+$userObj = new User();
+$userData = $userObj->checkUserExists('john@doe.com', 'testz');
+if ($userData) {
+    $user = new User($userData['id']);
+} else {
+    $user = null;
+}
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
     <head>
@@ -18,7 +31,7 @@
         <?php include('_header.php'); ?>
 
         <main class="app-main">
-            
+            <h1>Bonjour <?php echo ($user ? $user->getPrenom() . ' ' . $user->getNom() : ''); ?> !</h1>
         </main>
 
         <?php include('_footer.php'); ?>

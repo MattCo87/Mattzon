@@ -1,20 +1,24 @@
 <?php
-
 // On inclut la classe User
 require_once('php/entities/User.php');
 
 // Si les champs d'inscription sont remplis
-$registered = '';
+$error = '';
+
 if (!empty($_POST)) {
     // Ajout d'un user
     $user = new User();
-    $registered = $user->addUser([
-        'nom' => $_POST['firstname'],
-        'prenom' => $_POST['lastname'],
+    $error = $user->addUser([
+        'nom' => $_POST['lastname'],
+        'prenom' => $_POST['firstname'],
         'email' => $_POST['email'],
         'password' => $_POST['password'],
         'passwordConfirm' => $_POST['passwordConfirm'],
     ]);
+
+    if (!$error) {
+        header('Location: ./');
+    }
 }
 ?>
 
@@ -40,7 +44,7 @@ if (!empty($_POST)) {
         <main class="app-main">
             <div class="container-fluid">
                 <header>
-                    <h1 class="bg-light">Créez votre compte  <?php echo $registered; ?></h1>
+                    <h1 class="bg-light">Créez votre compte  <?php echo $error; ?></h1>
                 </header>
             </div>
 

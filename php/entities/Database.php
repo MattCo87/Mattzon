@@ -1,32 +1,29 @@
 <?php
 
 
-class Database {
-    private $servname;
-    private $dbname;
-    private $user;
-    private $pass;
+class Database
+{
+    protected $dbco;
 
-    public function __construct() {
-        require_once("config/bdd.php");
-        // On renseigne les valeurs de nos propriétés
-        $this->servname = $servname;
-        $this->dbname = $dbname;
-        $this->user = $user;
-        $this->pass = $pass;
+    public function __construct()
+    {
+        // On appelle la connexion à la bdd
+        $this->dbco = $this->connection();
     }
 
 
-    public function connection() {
+    public function connection()
+    {
+        require("config/bdd.php");
+
         // On tente de se connecter à la BDD
         try {
-            $dbco = new PDO("mysql:host={$this->servname};dbname={$this->dbname}", $this->user, $this->pass);
+            $dbco = new PDO("mysql:host={$servname};dbname={$dbname}", $user, $pass);
             $dbco->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-            return $dbco;
-            
-        } catch(PDOException $e) {
-            echo $e->getMessage();
+        } catch (PDOException $e) {
+            die($e->getMessage());
         }
+
+        return $dbco;
     }
 }
