@@ -1,3 +1,23 @@
+<?php
+// On inclut la classe User
+require_once('php/entities/User.php');
+
+// Si les champs de connexion sont remplis
+$error = '';
+
+if (!empty($_POST)) {
+    // On vérifie l'existence de l'user
+    $user = new User();
+    $sanitize = $user->sanitizeFormData($_POST);
+    $error = $user->checkUserExists($sanitize['email'], $sanitize['pwd']);
+
+    if ($error) {
+        header('Location: ./');
+    }else{
+        header('Location: ./connexion.php');
+    }
+}
+?>
 
 <!DOCTYPE html>
 <html lang="fr">
@@ -19,8 +39,50 @@
         <?php include('_header.php'); ?>
 
         <main class="app-main">
-            
+            <div class="container-fluid">
+                <header>
+                    <h1 class="bg-light">Connectez-vous</h1>
+                </header>
+            </div>
+
+            <div class="container my-5">
+                <form class="app-form" method="post" action="#">
+                    <fieldset>
+                        <legend class="bg-light">Vos informations de connexion</legend>
+
+                        <div class="row mb-3">
+                            <div class="col-3">
+                                <label for="email">Votre email</label>
+                            </div>
+                            <div class="col">
+                                <input type="text" id="email" name="email" class="form-control" />
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <div class="col-3">
+                                <label for="pwd">Votre mot de passe</label>
+                            </div>
+                            <div class="col">
+                                <input type="password" id="pwd" name="pwd" class="form-control" />
+                            </div>
+                        </div>
+                    </fieldset>
+
+                    <hr />
+
+                    <div class="row">
+                        <div class="col text-center">
+                            <button type="cancel" class="btn btn-link">Effacer</button>
+                        </div>
+                        <div class="col text-center">
+                            <button type="submit" class="btn btn-primary ">Se connecter</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
         </main>
+
 
         <?php include('_footer.php'); ?>
     </body>

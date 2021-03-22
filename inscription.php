@@ -12,7 +12,7 @@ if (!empty($_POST)) {
         'nom' => $_POST['lastname'],
         'prenom' => $_POST['firstname'],
         'email' => $_POST['email'],
-        'password' => $_POST['password'],
+        'pwd' => $_POST['pwd'],
         'passwordConfirm' => $_POST['passwordConfirm'],
     ]);
 
@@ -64,10 +64,10 @@ if (!empty($_POST)) {
 
                         <div class="row mb-3">
                             <div class="col-3">
-                                <label for="password">Votre mot de passe *</label>
+                                <label for="pwd">Votre mot de passe *</label>
                             </div>
                             <div class="col">
-                                <input type="password" id="password" name="password" class="form-control" required />
+                                <input type="password" id="pwd" name="pwd" class="form-control" required />
                             </div>
                         </div>
 

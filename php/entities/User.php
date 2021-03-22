@@ -88,7 +88,7 @@ class User extends Database
                         'nom' => $data['nom'],
                         'prenom' => $data['prenom'],
                         'email' => $data['email'],
-                        'pwd' => $data['password']
+                        'pwd' => $data['pwd']
                     ]);
 
                     // Si on arrive ici, alors on exécute la transaction :)
@@ -118,7 +118,7 @@ class User extends Database
     public function validateFormData($data)
     {
         // Test de la confirmation du mot de passe
-        if ($data['password'] != $data['passwordConfirm']) {
+        if ($data['pwd'] != $data['passwordConfirm']) {
             return 'passwordconfirm';
         }
         // Test de la validité de l'email
@@ -135,11 +135,11 @@ class User extends Database
      */
     public function sanitizeFormData($data)
     {
-        $data['nom'] = filter_var($data['nom'], FILTER_SANITIZE_STRING);
-        $data['prenom'] = filter_var($data['prenom'], FILTER_SANITIZE_STRING);
+        //$data['nom'] = filter_var($data['nom'], FILTER_SANITIZE_STRING);
+        //$data['prenom'] = filter_var($data['prenom'], FILTER_SANITIZE_STRING);
         $data['email'] = filter_var($data['email'], FILTER_SANITIZE_EMAIL);
-        $data['password'] = filter_var($data['password'], FILTER_SANITIZE_STRING);
-        $data['passwordConfirm'] = filter_var($data['passwordConfirm'], FILTER_SANITIZE_STRING);
+        $data['pwd'] = filter_var($data['pwd'], FILTER_SANITIZE_STRING);
+        //$data['passwordConfirm'] = filter_var($data['passwordConfirm'], FILTER_SANITIZE_STRING);
 
         return $data;
     }
