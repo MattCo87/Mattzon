@@ -22,37 +22,46 @@
                         <a class="nav-link" href="contact.php">Contact</a>
                     </li>
 
-                    <li class="nav-item">
-                        <a class="nav-link" href="connexion.php">
-                            <i class="fas fa-plug"></i>
-                            Connexion
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="inscription.php">Inscription</a>
-                    </li>
-
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                             data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fas fa-user"></i>
                             Mon compte
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li>
-                                <a class="dropdown-item" href="#">
-                                    <i class="fas fa-power-off"></i>
-                                    Déconnexion
-                                </a>
-                            </li>
+                            <?php if (!isset($_SESSION['user'])): ?>
+                                <li>
+                                    <a class="dropdown-item" href="connexion.php">
+                                        <i class="fas fa-plug"></i>
+                                        Connexion
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="inscription.php">
+                                        <i class="fas fa-user-plus"></i>
+                                        Inscription
+                                    </a>
+                                </li>
+                            <?php else: ?>
+                                <li>
+                                    <a class="dropdown-item" href="deconnexion.php">
+                                        <i class="fas fa-power-off"></i>
+                                        Déconnexion
+                                    </a>
+                                </li>
+                            <?php endif; ?>
                         </ul>
                     </li>
                     
                     <li class="nav-item">
-                        <a class="nav-link" href="panier.php">Panier</a>
+                        <a class="nav-link" href="panier.php">
+                            <i class="fas fa-shopping-cart"></i>
+                            Mon Panier
+                        </a>
                     </li>
                 </ul>
 
-                <form class="d-flex">
+                <form class="d-flex ml-auto">
                     <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                     <button class="btn btn-outline-success" type="submit">Search</button>
                 </form>

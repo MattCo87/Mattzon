@@ -1,15 +1,15 @@
 <?php
 require_once('php/entities/User.php');
 
-// Connexion d'un utilisateur
-$userObj = new User();
-$userData = $userObj->checkUserExists('john@doe.com', 'test');
-if ($userData) {
-    // On instancie un utilisateur avec l'id récupéré
-    $user = new User($userData['id']);
+// On accède à la session
+session_start();
+
+if (isset($_SESSION['user'])) {
+    $user = new User($_SESSION['user']['id']);
 } else {
     $user = null;
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -32,7 +32,7 @@ if ($userData) {
         <?php include('_header.php'); ?>
 
         <main class="app-main">
-            <h1>Bonjour <?php echo ($user ? $user->getPrenom() . ' ' . $user->getNom() : ''); ?> !</h1>
+            <h1>Bonjour <?php echo($user ? $user->getPrenom() . ' ' . $user->getNom() : ''); ?> !</h1>
         </main>
 
         <?php include('_footer.php'); ?>

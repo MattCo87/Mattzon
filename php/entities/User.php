@@ -118,12 +118,17 @@ class User extends Database
     public function validateFormData($data)
     {
         // Test de la confirmation du mot de passe
-        if ($data['pwd'] != $data['passwordConfirm']) {
-            return 'passwordconfirm';
+        if (isset($data['passwordConfirm'])) {
+            if ($data['pwd'] != $data['passwordConfirm']) {
+                return 'passwordconfirm';
+            }
         }
+
         // Test de la validité de l'email
-        if (!filter_var($data['email'], FILTER_VALIDATE_EMAIL)) {
-            return 'notanemail';
+        if (isset($data['email'])) {
+            if (!filter_var($data['email'], FILTER_VALIDATE_EMAIL)) {
+                return 'notanemail';
+            }
         }
 
         // Pas d'erreur
@@ -135,11 +140,21 @@ class User extends Database
      */
     public function sanitizeFormData($data)
     {
-        //$data['nom'] = filter_var($data['nom'], FILTER_SANITIZE_STRING);
-        //$data['prenom'] = filter_var($data['prenom'], FILTER_SANITIZE_STRING);
-        $data['email'] = filter_var($data['email'], FILTER_SANITIZE_EMAIL);
-        $data['pwd'] = filter_var($data['pwd'], FILTER_SANITIZE_STRING);
-        //$data['passwordConfirm'] = filter_var($data['passwordConfirm'], FILTER_SANITIZE_STRING);
+        if (isset($data['nom'])) {
+            $data['nom'] = filter_var($data['nom'], FILTER_SANITIZE_STRING);
+        }
+        if (isset($data['prenom'])) {
+            $data['prenom'] = filter_var($data['prenom'], FILTER_SANITIZE_STRING);
+        }
+        if (isset($data['email'])) {
+            $data['email'] = filter_var($data['email'], FILTER_SANITIZE_EMAIL);
+        }
+        if (isset($data['pwd'])) {
+            $data['pwd'] = filter_var($data['pwd'], FILTER_SANITIZE_STRING);
+        }
+        if (isset($data['passwordConfirm'])) {
+            $data['passwordConfirm'] = filter_var($data['passwordConfirm'], FILTER_SANITIZE_STRING);
+        }
 
         return $data;
     }
@@ -185,5 +200,33 @@ class User extends Database
 
         // Renvoi des résultats
         return $result;
+    }
+
+    /**
+     * Connexion d'un utilisateur
+     */
+    public function login($data)
+    {
+        // On teste les valeurs
+        $error = $this->validateFormData($data);
+
+        if (!$error) {
+            // Pas d'erreur : on nettoie les données
+            $data = $this->sanitizeFormData($data);
+
+            // On vérifie que l'utilisateur existe bien
+            $userData = $this->checkUserExists($data['email'], $data['pwd']);
+            if ($userData) {
+                // On connecte l'utilisateur
+                unset($userData['pwd']);
+                session_start();
+                $_SESSION['user'] = $userData;
+
+                return false;
+            }else {
+                // L'utilisateur n'existe pas
+                return 'Identifiants invalides';
+            }
+        }
     }
 }

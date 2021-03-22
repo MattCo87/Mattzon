@@ -1,4 +1,10 @@
 <?php
+// On vérifie qu'aucun utilisateur n'est connecté
+session_start();
+if (isset($_SESSION['user'])) {
+    header('Location: ./');
+}
+
 // On inclut la classe User
 require_once('php/entities/User.php');
 
@@ -8,13 +14,15 @@ $error = '';
 if (!empty($_POST)) {
     // On vérifie l'existence de l'user
     $user = new User();
-    $sanitize = $user->sanitizeFormData($_POST);
-    $error = $user->checkUserExists($sanitize['email'], $sanitize['pwd']);
+    $error = $user->login([
+        'email' => $_POST['email'],
+        'pwd' => $_POST['pwd'],
+    ]);
 
     if ($error) {
+        header('Location: ./connexion.php?err=' . $error);
+    } else {
         header('Location: ./');
-    }else{
-        header('Location: ./connexion.php');
     }
 }
 ?>
@@ -28,11 +36,12 @@ if (!empty($_POST)) {
         <title>Connectez-vous - aMattzon</title>
         <meta name="description" content="Blablabla…" />
 
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
         <script src="https://kit.fontawesome.com/b916232238.js" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="assets/css/styles.css" />
 
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous" defer></script>
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous" defer></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous" defer></script>
     </head>
 
     <body>
@@ -46,25 +55,34 @@ if (!empty($_POST)) {
             </div>
 
             <div class="container my-5">
-                <form class="app-form" method="post" action="#">
+                <?php if(isset($_GET['err'])): ?>
+                    <div class="alert alert-danger alert-dismissible fade show" id="errorMsg" role="alert">
+                        <?php echo $_GET['err']; ?>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                <?php endif; ?>
+
+                <form class="app-form" method="post">
                     <fieldset>
-                        <legend class="bg-light">Vos informations de connexion</legend>
+                        <legend class="bg-light mb-3">Vos informations de connexion</legend>
 
                         <div class="row mb-3">
                             <div class="col-3">
-                                <label for="email">Votre email</label>
+                                <label for="email">Votre email *</label>
                             </div>
                             <div class="col">
-                                <input type="text" id="email" name="email" class="form-control" />
+                                <input type="text" id="email" name="email" class="form-control" required />
                             </div>
                         </div>
 
                         <div class="row mb-3">
                             <div class="col-3">
-                                <label for="pwd">Votre mot de passe</label>
+                                <label for="pwd">Votre mot de passe *</label>
                             </div>
                             <div class="col">
-                                <input type="password" id="pwd" name="pwd" class="form-control" />
+                                <input type="password" id="pwd" name="pwd" class="form-control" required />
                             </div>
                         </div>
                     </fieldset>

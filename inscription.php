@@ -1,4 +1,10 @@
 <?php
+// On vérifie qu'aucun utilisateur n'est connecté
+session_start();
+if (isset($_SESSION['user'])) {
+    header('Location: ./');
+}
+
 // On inclut la classe User
 require_once('php/entities/User.php');
 
