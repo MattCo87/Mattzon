@@ -1,6 +1,6 @@
 <!-- Vignette produit description -->
 <div class="vignette">
-    <a href="#" class="vignette-image" title="<?php echo ($unproduct->getName()); ?>">
+    <a href="produit.php?id=<?php echo $unproduct->getId(); ?>" class="vignette-image" title="<?php echo ($unproduct->getName()); ?>">
         <img src="assets/img/<?php echo ($unproduct->getImage()); ?>" alt="Pardon je vous la pique 2s" />
     </a>
     <h3><?php echo ($unproduct->getName()); ?></h3>
@@ -10,26 +10,20 @@
     <!-- Vignette produit action -->
     <div class="action-vignette">
         <p>
-            <a href="#">
+            <a href="produit.php?id=<?php echo $unproduct->getId(); ?>">
                 <i class="fas fa-search-plus"></i>
             </a>
         </p>
         <p>
-            <?php
-            if (isset($_SESSION['user'])) {
-            ?>
+            <?php if (isset($_SESSION['user'])): ?>
                 <a href="#">
                     <i class="fas fa-cart-arrow-down"></i>
                 </a>
-            <?php
-            } else {
-            ?>
+            <?php else: ?>
                 <a href="connexion.php">
                     <i class="fas fa-plug"></i>
                 </a>
-            <?php
-            }
-            ?>
+            <?php endif; ?>
         </p>
     </div>
 </div>

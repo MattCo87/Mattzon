@@ -18,10 +18,34 @@ class Product extends Database
         parent::__construct();
     }
 
+    /** Récupération de tous les produits */
+    public function getProducts($q = null)
+    {
+        // Connexion à la BDD
+        $uneconnexion = new Database();
+        $connexion = $uneconnexion->dbco;
+    
+        // On construit la requête
+        $req = "SELECT id FROM product";
+        if ($q) {
+            $req .= " WHERE name LIKE :q OR shortdescription LIKE :q OR description LIKE :q";
+            $result = $connexion->prepare($req);
+            $result->execute(['q' => '%' . $q . '%']);
+        } else {
+            $result = $connexion->prepare($req);
+            $result->execute();
+        }
+
+        // On récupére tous les ID des produits en BDD
+        $tableau = $result->fetchAll(PDO::FETCH_OBJ);
+    
+        return $tableau;
+    }
+
     /**
      * Récupération des données d'un produit selon son ID
      */
-    function getProduct($id)
+    public function getProduct($id)
     {
         $sql = "SELECT * FROM product WHERE id = :id";
 
@@ -38,6 +62,14 @@ class Product extends Database
         $this->description = $tableau['description'];
         $this->image = $tableau['image'];
         $this->price = $tableau['price'];
+    }
+
+    /**
+     * Get product id
+     */
+    public function getId()
+    {
+        return $this->id;
     }
 
     /**

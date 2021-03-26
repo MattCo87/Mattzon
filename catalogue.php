@@ -3,15 +3,16 @@
 // On inclut la classe Procduct
 require_once('php/entities/Product.php');
 
-// On inclut le modèle des produits
-require_once('php/models/_product.php');
-
 // On accède à la session
 session_start();
 
 // Récupération d'un tableau de produit de la base de données
-$tabProducts = getProducts();
+$productObj = new Product();
 
+// Si on a un paramètre GET, alors il faut filtrer la requête
+$searchText = isset($_GET['q']) ? $_GET['q'] : null;
+
+$tabProducts = $productObj->getProducts($searchText);
 ?>
 
 <!DOCTYPE html>
@@ -35,6 +36,15 @@ $tabProducts = getProducts();
     <?php include('_header.php'); ?>
 
     <main class="app-main">
+        <div class="container mb-3">
+        <h1>
+            <?php if ($searchText): ?>
+                Résultats pour : <?php echo $searchText; ?>
+            <?php else: ?>
+                Tous les produits
+            <?php endif; ?>
+        </h1>
+
         <!-- Tableau de vignettes -->
         <div class="vignettes">
             <?php
@@ -47,6 +57,7 @@ $tabProducts = getProducts();
                 include('_vignette.php');
             }
             ?>
+        </div>
         </div>
     </main>
 

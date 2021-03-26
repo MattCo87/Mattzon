@@ -1,3 +1,11 @@
+<?php
+if (isset($_SESSION['cart'])) {
+    $cartNb = sizeof($_SESSION['cart']);
+} else {
+    $cartNb = 0;
+}
+?>
+
 <header class="app-header mb-3">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
@@ -57,12 +65,15 @@
                         <a class="nav-link" href="panier.php">
                             <i class="fas fa-shopping-cart"></i>
                             Mon Panier
+                            <sup>
+                                <span class="badge bg-secondary" id="cartNb"><?php echo $cartNb; ?></span>
+                            </sup>
                         </a>
                     </li>
                 </ul>
 
-                <form class="d-flex ml-auto">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <form class="d-flex ml-auto" action="catalogue.php">
+                    <input class="form-control me-2" name="q" type="search" placeholder="Search" aria-label="Search">
                     <button class="btn btn-outline-success" type="submit">Search</button>
                 </form>
             </div>
