@@ -3,19 +3,14 @@
 // On inclut la classe Procduct
 require_once('php/entities/Product.php');
 
-$uneconnexion = new Database();
-$connexion = $uneconnexion->dbco;
+// On inclut le modèle des produits
+require_once('php/models/_product.php');
 
-function getProducts($connexion)
-{
-    $result = $connexion->prepare("SELECT id FROM product");
-    $result->execute();
-    $tableau = $result->fetchAll(PDO::FETCH_OBJ);
-    return $tableau;
-}
+// On accède à la session
+session_start();
 
 // Récupération d'un tableau de produit de la base de données
-$tabProducts = getProducts($connexion);
+$tabProducts = getProducts();
 
 ?>
 
@@ -40,25 +35,19 @@ $tabProducts = getProducts($connexion);
     <?php include('_header.php'); ?>
 
     <main class="app-main">
-        <?php
+        <!-- Tableau de vignettes -->
+        <div class="vignettes">
+            <?php
+            foreach ($tabProducts as $key) {
+                // Je récupére la description du produit par son ID
+                $unproduct = new Product();
+                $unproduct->getProduct($key->id);
 
-        foreach ($tabProducts as $key) {
-
-            // Je récupére la description du produit par son ID
-            $unproduct = new Product();
-
-            $unproduct->getProduct($key->id);
-        ?>
-            <p>
-                <?php echo $unproduct->getName(); ?>
-            </p>
-            <p>
-                <img src="assets/img/<?php echo ($unproduct->getImage()); ?>" alt="Pardon je vous la pique 2s" />
-            </p>
-            <hr>
-        <?php
-        }
-        ?>
+                // J'affiche chaque vignette
+                include('_vignette.php');
+            }
+            ?>
+        </div>
     </main>
 
     <?php include('_footer.php'); ?>
