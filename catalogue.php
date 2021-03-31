@@ -68,6 +68,8 @@ $tabProducts = $productObj->getProducts($searchText);
     </main>
 
     <?php include('_footer.php'); ?>
+
+    <?php  include('popupConnexion.php');  ?>
 </body>
 
 </html>
