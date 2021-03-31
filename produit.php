@@ -4,8 +4,6 @@ $id = isset($_GET['id']) ? $_GET['id'] : null;
 if (!$id) {
     header('Location: catalogue.php');
 }
-
-
 ?>
 
 <!DOCTYPE html>

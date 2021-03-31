@@ -1,3 +1,5 @@
+<?php session_start(); ?>
+
 <!DOCTYPE html>
 <html lang="fr">
     <head>
@@ -18,7 +20,16 @@
         <?php include('_header.php'); ?>
 
         <main class="app-main">
+            <div class="container">
+                <p>Liste des produits (vignette, nom, prix unitaire, quantité, prox total, bouton "enlever du panier")</p>
+                <?php
+                if (isset($_SESSION['cart'])) {
+                    echo '<pre>' . var_export($_SESSION['cart'], true) . '</pre>';
+                }
+                ?>
 
+                <p>Bouton "Vider le panier"</p>
+            </div>
         </main>
 
         <?php include('_footer.php'); ?>

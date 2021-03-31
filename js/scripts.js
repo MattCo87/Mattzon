@@ -12,7 +12,28 @@ const showPopup = e => {
 
 // Fonction qui ajoute un produit au panier
 const addToCart = (id, e) => {
-  console.log(id)
+  if (window.XMLHttpRequest) {
+    const xhr = new XMLHttpRequest()
+    xhr.open('GET', 'php/helpers/cart.php?id=' + id)
+    xhr.send()
+
+    xhr.onload = () => {
+      if (xhr.status !== 200) {
+        console.log('Erreur : ' + xhr.status + ' - ' + xhr.statusText)
+      } else {
+        const qty = xhr.responseText
+        const spanCart = document.getElementById('cartNb')
+        spanCart.innerHTML = qty
+      }
+    }
+
+    xhr.onerror = function () {
+      console.log('La requête a échoué')
+    }
+  } else {
+    console.log('No XmlHttpRequest in your browser')
+  }
+
   e.preventDefault()
 }
 

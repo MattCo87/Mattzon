@@ -1,8 +1,10 @@
 <?php
+$cartNb = 0;
 if (isset($_SESSION['cart'])) {
-    $cartNb = sizeof($_SESSION['cart']);
-} else {
-    $cartNb = 0;
+    // Récupération du nombre de produits dans le panier
+    foreach($_SESSION['cart'] as $itemId => $itemQty){
+        $cartNb += $itemQty;
+    }
 }
 ?>
 
