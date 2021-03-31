@@ -1,10 +1,32 @@
 <?php
+session_start();
+
+// On inclut la classe User
+require_once('php/entities/User.php');
+
+// Si les champs de connexion sont remplis
+$error = '';
+
+if (!empty($_POST)) {
+    // On vérifie l'existence de l'user
+    $user = new User();
+    $error = $user->login([
+        'email' => $_POST['email'],
+        'pwd' => $_POST['pwd'],
+    ]);
+
+    if ($error) {
+        header('Location: ./catalogue.php?err=' . $error);
+    } else {
+        header('Location: ./catalogue.php');
+    }
+}
 
 // On inclut la classe Procduct
 require_once('php/entities/Product.php');
 
 // On accède à la session
-session_start();
+// session_start();
 
 // Récupération d'un tableau de produit de la base de données
 $productObj = new Product();
@@ -28,10 +50,9 @@ $tabProducts = $productObj->getProducts($searchText);
     <!-- Scripts JS -->
     <script src="js/scripts.js" defer></script>
 
-    <link rel="stylesheet" href="assets/css/styles.css" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/b916232238.js" crossorigin="anonymous"></script>
-
+    <link rel="stylesheet" href="assets/css/styles.css" />
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous" defer></script>
 
@@ -41,6 +62,15 @@ $tabProducts = $productObj->getProducts($searchText);
     <?php include('_header.php'); ?>
 
     <main class="app-main">
+        <div class="container my-5">
+            <?php if(isset($_GET['err'])): ?>
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <?php echo $_GET['err']; ?>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            <?php endif; ?>
+        </div>
+
         <div class="container mb-3">
             <h1>
                 <?php if ($searchText) : ?>
@@ -60,7 +90,6 @@ $tabProducts = $productObj->getProducts($searchText);
 
                     // J'affiche chaque vignette
                     include('_vignette.php');
-
                 }
                 ?>
             </div>
