@@ -15,15 +15,18 @@
             </a>
         </p>
         <p>
-            <?php if (isset($_SESSION['user'])): ?>
+            <?php if (isset($_SESSION['user'])) : ?>
                 <a href="#">
                     <i class="fas fa-cart-arrow-down"></i>
                 </a>
-            <?php else: ?>
-                <a href="connexion.php">
-                    <i class="fas fa-plug"></i>
+            <?php else : ?>
+                <a href="#" id='atc'>
+                    <i class="fas fa-cart-arrow-down"></i>
+                    <?php  include('popupConnexion.php');  ?>
                 </a>
+
             <?php endif; ?>
+
         </p>
     </div>
 </div>
