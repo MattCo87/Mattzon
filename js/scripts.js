@@ -4,6 +4,7 @@ const addToCartButtons = document.getElementsByClassName('addtocart')
 const popup = document.getElementById('myPopup')
 const close = document.getElementById('closePopup')
 const emptyCart = document.getElementById('emptyCart')
+const removeCartButtons = document.getElementsByClassName('removeCart')
 
 // Fonction qui ouvre la popup
 const showPopup = e => {
@@ -86,4 +87,14 @@ if (emptyCart !== null) {
       }
     }
   })
+}
+
+// On parcourt les boutons "removeCart"
+for (let i = 0; i < removeCartButtons.length; i++) {
+    const element = removeCartButtons[i]
+    element.addEventListener('click', () => removeCart(element.dataset.productid))
+}
+
+const removeCart = id => {
+    console.log(id);
 }
