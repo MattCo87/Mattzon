@@ -54,7 +54,7 @@ require_once('php/entities/Product.php');
                                 <?php echo $qty; ?>
                             </div>
                             <div class="table-row-cell text-right">
-                                <?php echo $unproduct->getPrice() * $qty . "€"; ?>
+                                <?php echo number_format($unproduct->getPrice() * $qty, 2) . "€"; ?>
                             </div>
                             <div class="table-row-cell text-center">
                                 <button><i class="fas fa-trash"></i></button>

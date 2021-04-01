@@ -14,7 +14,7 @@ const showPopup = e => {
 // Fonction qui ajoute un produit au panier
 const addToCart = (id, e) => {
   if (window.XMLHttpRequest) {
-    const xhr = new XMLHttpRequest()
+    const xhr = new window.XMLHttpRequest()
     xhr.open('GET', 'php/helpers/cart.php?id=' + id + '&action=add')
     xhr.send()
 
@@ -25,6 +25,7 @@ const addToCart = (id, e) => {
         const qty = xhr.responseText
         const spanCart = document.getElementById('cartNb')
         spanCart.innerHTML = qty
+        window.alert('Le produit a été ajouté à votre panier')
       }
     }
 
@@ -61,29 +62,28 @@ for (let i = 0; i < addToCartButtons.length; i++) {
 
 // Vidage du panier
 if (emptyCart !== null) {
-    emptyCart.addEventListener('click', () => {
+  emptyCart.addEventListener('click', () => {
+    if (window.confirm('Voulez-vous vider entièrement votre panier ?')) {
       // On vide le panier
-
       if (window.XMLHttpRequest) {
-        const xhr = new XMLHttpRequest()
+        const xhr = new window.XMLHttpRequest()
         xhr.open('GET', 'php/helpers/cart.php?action=empty')
         xhr.send()
-    
+
         xhr.onload = () => {
           if (xhr.status !== 200) {
             console.log('Erreur : ' + xhr.status + ' - ' + xhr.statusText)
           } else {
-             window.location.href = "panier.php"
+            window.location.href = 'panier.php'
           }
         }
-    
+
         xhr.onerror = function () {
           console.log('La requête a échoué')
         }
       } else {
         console.log('No XmlHttpRequest in your browser')
       }
-
-
-    })
-  }
+    }
+  })
+}
