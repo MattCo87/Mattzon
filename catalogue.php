@@ -25,8 +25,6 @@ if (!empty($_POST)) {
 // On inclut la classe Procduct
 require_once('php/entities/Product.php');
 
-// On accède à la session
-// session_start();
 
 // Récupération d'un tableau de produit de la base de données
 $productObj = new Product();
