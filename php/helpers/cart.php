@@ -4,6 +4,9 @@ session_start();
 // Récupération de l'action
 $action = isset($_GET['action']) ? $_GET['action'] : null;
 
+// Récupération de l'id
+$id = isset($_GET['id']) ? $_GET['id'] : null;
+
 if ($action) {
     switch ($action) {
         case "add":
@@ -14,7 +17,11 @@ if ($action) {
             emptyCart();
             break;
 
-        default : 
+        case "remove":
+            removeCart($id);
+            break;
+
+        default:
             echo "Action inconnue";
             break;
     }
@@ -25,6 +32,7 @@ if ($action) {
 
 function addToCart()
 {
+
     // Récupération de l'id
     $id = isset($_GET['id']) ? $_GET['id'] : null;
 
@@ -61,7 +69,13 @@ function addToCart()
     }
 }
 
-function emptyCart(){
+function emptyCart()
+{
     unset($_SESSION['cart']);
     echo "Panier vidé";
+}
+
+function removeCart($id)
+{
+    unset($_SESSION['cart'][$id]);
 }

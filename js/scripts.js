@@ -96,5 +96,26 @@ for (let i = 0; i < removeCartButtons.length; i++) {
 }
 
 const removeCart = id => {
-    console.log(id);
+    if (window.XMLHttpRequest) {
+        const xhr = new window.XMLHttpRequest()
+        xhr.open('GET', 'php/helpers/cart.php?id=' + id + '&action=remove')
+        xhr.send()
+    
+        xhr.onload = () => {
+          if (xhr.status !== 200) {
+            console.log('Erreur : ' + xhr.status + ' - ' + xhr.statusText)
+          } else {
+            const qty = xhr.responseText
+            const spanCart = document.getElementById('cartNb')
+            spanCart.innerHTML = qty
+            window.alert('Le produit a été supprimé de votre panier')
+          }
+        }
+    
+        xhr.onerror = function () {
+          console.log('La requête a échoué')
+        }
+      } else {
+        console.log('No XmlHttpRequest in your browser')
+      }
 }
