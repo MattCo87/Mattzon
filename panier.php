@@ -34,6 +34,15 @@ require_once('php/entities/Product.php');
             
             <?php if (!empty($_SESSION['cart'])) : ?>
                 <div class="table">
+                    <div class="table-row">
+                        <div class="table-row-cell">&nbsp;</div>
+                        <div class="table-row-cell">Nom du produit</div>
+                        <div class="table-row-cell text-right">Prix Unitaire</div>
+                        <div class="table-row-cell text-right">Quantité</div>
+                        <div class="table-row-cell text-right">Total</div>
+                        <div class="table-row-cell">&nbsp;</div>
+                    </div>
+
                     <?php foreach ($_SESSION['cart'] as $id => $qty) :
                         $unproduct = new Product();
                         $unproduct->getProduct($id); ?>
@@ -57,7 +66,7 @@ require_once('php/entities/Product.php');
                                 <?php echo number_format($unproduct->getPrice() * $qty, 2) . "€"; ?>
                             </div>
                             <div class="table-row-cell text-center">
-                                <button><i class="fas fa-trash"></i></button>
+                                <button type="button" class="btn btn-outline-danger"><i class="fas fa-trash"></i></button>
                             </div>
                         </div>
 
@@ -65,7 +74,7 @@ require_once('php/entities/Product.php');
                 </div>
 
                 <p class="text-right">
-                    <button id="emptyCart">Vider le panier</button>
+                    <button type="button" class="btn btn-danger" id="emptyCart">Vider le panier</button>
                 </p>
             <?php else: ?>
                 <p class="text-center">Votre panier est vide…</p>
