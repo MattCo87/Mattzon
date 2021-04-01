@@ -65,7 +65,7 @@ require_once('php/entities/Product.php');
                 </div>
 
                 <p class="text-right">
-                    <button>Vider le panier</button>
+                    <button id="emptyCart">Vider le panier</button>
                 </p>
             <?php else: ?>
                 <p class="text-center">Votre panier est vide…</p>

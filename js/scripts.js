@@ -3,6 +3,7 @@ const openModalButtons = document.getElementsByClassName('openmodal')
 const addToCartButtons = document.getElementsByClassName('addtocart')
 const popup = document.getElementById('myPopup')
 const close = document.getElementById('closePopup')
+const emptyCart = document.getElementById('emptyCart')
 
 // Fonction qui ouvre la popup
 const showPopup = e => {
@@ -14,7 +15,7 @@ const showPopup = e => {
 const addToCart = (id, e) => {
   if (window.XMLHttpRequest) {
     const xhr = new XMLHttpRequest()
-    xhr.open('GET', 'php/helpers/cart.php?id=' + id)
+    xhr.open('GET', 'php/helpers/cart.php?id=' + id + '&action=add')
     xhr.send()
 
     xhr.onload = () => {
@@ -57,3 +58,32 @@ for (let i = 0; i < addToCartButtons.length; i++) {
   const productId = element.dataset.productid
   element.addEventListener('click', () => addToCart(productId, event))
 }
+
+// Vidage du panier
+if (emptyCart !== null) {
+    emptyCart.addEventListener('click', () => {
+      // On vide le panier
+
+      if (window.XMLHttpRequest) {
+        const xhr = new XMLHttpRequest()
+        xhr.open('GET', 'php/helpers/cart.php?action=empty')
+        xhr.send()
+    
+        xhr.onload = () => {
+          if (xhr.status !== 200) {
+            console.log('Erreur : ' + xhr.status + ' - ' + xhr.statusText)
+          } else {
+             window.location.href = "panier.php"
+          }
+        }
+    
+        xhr.onerror = function () {
+          console.log('La requête a échoué')
+        }
+      } else {
+        console.log('No XmlHttpRequest in your browser')
+      }
+
+
+    })
+  }
