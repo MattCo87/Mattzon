@@ -69,3 +69,32 @@ html {
     top: 0.25rem;
     right: 0.25rem;
 }
+
+/* ******************************************           TABLE     ************************  */
+.table {
+
+}
+
+.table-row {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-gap: 1rem;
+    align-items: center;
+    border: 1px dotted #cfcfcf;
+}
+
+.table-row-cell {
+    padding: 1rem 1.5rem;
+}
+
+.table-row-cell img {
+    height: 3rem;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-right {
+    text-align: right;
+}

@@ -30,38 +30,46 @@ require_once('php/entities/Product.php');
 
     <main class="app-main">
         <div class="container">
-            <p>Liste des produits (vignette, nom, prix unitaire, quantité, prox total, bouton "enlever du panier")</p>
-            <?php
-            if (isset($_SESSION['cart'])) {
-                echo '<pre>' . var_export($_SESSION['cart'], true) . '</pre>';
-            }
-
-            if (!empty($_SESSION['cart'])) : ?>
-                <div class="vignettes">
+            <h1>Mon panier</h1>
+            
+            <?php if (!empty($_SESSION['cart'])) : ?>
+                <div class="table">
                     <?php foreach ($_SESSION['cart'] as $id => $qty) :
                         $unproduct = new Product();
                         $unproduct->getProduct($id); ?>
 
-                        <div class="vignette">
-                            <a href="#" class="vignette-image" title="<?php echo $unproduct->getName(); ?>">
-                                <img src="assets/img/<?php echo ($unproduct->getImage()); ?>" alt="Pardon je vous la pique 2s" />
+                        <div class="table-row">
+                            <a href="#" class="table-row-cell text-center" title="<?php echo $unproduct->getName(); ?>">
+                                <img src="assets/img/<?php echo($unproduct->getImage()); ?>" alt="Pardon je vous la pique 2s" />
                             </a>
-                            <div>
-                                <p>
-                                    <?php echo $unproduct->getName(); ?>
-                                    <?php echo $unproduct->getPrice() . "€ x " . $qty . ' = ' . $unproduct->getPrice() * $qty . "€"; ?>
-                                </p>
+                            <div class="table-row-cell">
+                                <a href="#" class="table-row-cell" title="<?php echo $unproduct->getName(); ?>">
+                                        <?php echo $unproduct->getName(); ?>
+                                </a>
+                            </div>
+                            <div class="table-row-cell text-right">
+                                <?php echo $unproduct->getPrice() . "€"; ?>
+                            </div>
+                            <div class="table-row-cell text-right">
+                                <?php echo $qty; ?>
+                            </div>
+                            <div class="table-row-cell text-right">
+                                <?php echo $unproduct->getPrice() * $qty . "€"; ?>
+                            </div>
+                            <div class="table-row-cell text-center">
+                                <button><i class="fas fa-trash"></i></button>
                             </div>
                         </div>
 
                     <?php endforeach; ?>
                 </div>
+
+                <p class="text-right">
+                    <button>Vider le panier</button>
+                </p>
+            <?php else: ?>
+                <p class="text-center">Votre panier est vide…</p>
             <?php endif; ?>
-
-
-
-
-            <p>Bouton "Vider le panier"</p>
         </div>
     </main>
 
