@@ -38,10 +38,12 @@ const addToCart = (id, e) => {
 }
 
 // Fermeture de la popup
-close.addEventListener('click', () => {
-  // On masque la popup
-  popup.removeAttribute('style')
-})
+if (close !== null) {
+  close.addEventListener('click', () => {
+    // On masque la popup
+    popup.removeAttribute('style')
+  })
+}
 
 // On parcourt les boutons "openmodal"
 for (let i = 0; i < openModalButtons.length; i++) {
