@@ -39,24 +39,21 @@ require_once('php/entities/Product.php');
             if (!empty($_SESSION['cart'])) : ?>
                 <div class="vignettes">
                     <?php foreach ($_SESSION['cart'] as $key => $item) :
-                        echo  var_dump($item);
                         $unproduct = new Product();
-                        //  $unproduct->getProduct($item->id); 
-                    ?>
+                        $unproduct->getProduct($key); ?>
 
-                        <?php /*
-                            <div class="vignette">
-                                <a href="#" class="vignette-image" title="<?php echo ($unproduct->getName()); ?>">
-                                    <img src="assets/img/<?php echo ($unproduct->getImage()); ?>" alt="Pardon je vous la pique 2s" />
-                                </a>
-                                <div>
-                                    <p>
-                                        <?php echo ($unproduct->getName()); ?>
-                                        <?php echo ($unproduct->getPrice() . "€"); ?>
-                                    </p>
-                                </div>
+                        <div class="vignette">
+                            <a href="#" class="vignette-image" title="<?php echo ($unproduct->getName()); ?>">
+                                <img src="assets/img/<?php echo ($unproduct->getImage()); ?>" alt="Pardon je vous la pique 2s" />
+                            </a>
+                            <div>
+                                <p>
+                                    <?php echo ($unproduct->getName()); ?>
+                                    <?php echo ($unproduct->getPrice() . "€"); ?>
+                                </p>
                             </div>
-                            */ ?>
+                        </div>
+
                     <?php endforeach; ?>
                 </div>
             <?php endif; ?>
