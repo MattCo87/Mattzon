@@ -73,7 +73,7 @@ require_once('php/entities/Product.php');
                     <?php endforeach; ?>
                 </div>
 
-                <p class="text-right">
+                <p class="text-end">
                     <button type="button" class="btn btn-danger" id="emptyCart">Vider le panier</button>
                 </p>
             <?php else: ?>
