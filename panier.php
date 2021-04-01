@@ -36,10 +36,10 @@ require_once('php/entities/Product.php');
                 <div class="table">
                     <div class="table-row">
                         <div class="table-row-cell">&nbsp;</div>
-                        <div class="table-row-cell">Nom du produit</div>
-                        <div class="table-row-cell text-right">Prix Unitaire</div>
-                        <div class="table-row-cell text-right">Quantité</div>
-                        <div class="table-row-cell text-right">Total</div>
+                        <div class="table-row-cell fw-bold">Nom du produit</div>
+                        <div class="table-row-cell fw-bold text-end">Prix Unitaire</div>
+                        <div class="table-row-cell fw-bold text-end">Quantité</div>
+                        <div class="table-row-cell fw-bold text-end">Total</div>
                         <div class="table-row-cell">&nbsp;</div>
                     </div>
 
@@ -56,13 +56,13 @@ require_once('php/entities/Product.php');
                                         <?php echo $unproduct->getName(); ?>
                                 </a>
                             </div>
-                            <div class="table-row-cell text-right">
+                            <div class="table-row-cell text-end">
                                 <?php echo $unproduct->getPrice() . "€"; ?>
                             </div>
-                            <div class="table-row-cell text-right">
+                            <div class="table-row-cell text-end">
                                 <?php echo $qty; ?>
                             </div>
-                            <div class="table-row-cell text-right">
+                            <div class="table-row-cell text-end">
                                 <?php echo number_format($unproduct->getPrice() * $qty, 2) . "€"; ?>
                             </div>
                             <div class="table-row-cell text-center">
