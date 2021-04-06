@@ -88,6 +88,11 @@ img {
     padding: 1rem 1.5rem;
 }
 
-.table-row-cell input[type="number"] {
+.table-row-cell .qty {
+    display: inline-block;
+    padding: 0.25rem 0.5rem;
+    min-width: 3rem;
     text-align: center;
+    border: 1px solid #cfcfcf;
+    border-radius: 0.25rem;
 }
