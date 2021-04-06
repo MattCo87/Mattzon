@@ -97,31 +97,27 @@ for (let i = 0; i < removeCartButtons.length; i++) {
 
 // Fonction qui retire un article du panier
 const removeToCart = id => {
+  if (window.confirm('Voulez-vous supprimer cet article de votre panier ?')) {
     if (window.XMLHttpRequest) {
-        const xhr = new window.XMLHttpRequest()
-        xhr.open('GET', 'php/helpers/cart.php?id=' + id + '&action=remove')
-        xhr.send()
-    
-        xhr.onload = () => {
-          if (xhr.status !== 200) {
-            console.log('Erreur : ' + xhr.status + ' - ' + xhr.statusText)
-          } else {
-            const qty = xhr.responseText
-            const spanCart = document.getElementById('cartNb')
-
-            //Mise à jour de la quantité du panier
-            spanCart.innerHTML = qty       
-            window.alert('Le produit a été supprimé de votre panier')
-
-            // On "rafraîchit" la page
-            window.location.href = 'panier.php'  
-          }
+      const xhr = new window.XMLHttpRequest()
+      xhr.open('GET', 'php/helpers/cart.php?id=' + id + '&action=remove')
+      xhr.send()
+  
+      xhr.onload = () => {
+        if (xhr.status !== 200) {
+          console.log('Erreur : ' + xhr.status + ' - ' + xhr.statusText)
+        } else {
+  
+          // On "rafraîchit" la page
+          window.location.href = 'panier.php'  
         }
-    
-        xhr.onerror = function () {
-          console.log('La requête a échoué')
-        }
-      } else {
-        console.log('No XmlHttpRequest in your browser')
       }
+  
+      xhr.onerror = function () {
+        console.log('La requête a échoué')
+      }
+    } else {
+      console.log('No XmlHttpRequest in your browser')
+    }
+  }
 }
