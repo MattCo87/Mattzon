@@ -61,7 +61,7 @@ require_once('php/entities/Product.php');
                             </div>
                             <div class="table-row-cell d-flex justify-content-center align-items-center">
                                 <button type="button" class="btn qtymoins">-</button>
-                                <input type="number" value="<?php echo $qty; ?>" class="form-control" />
+                                <input type="number" value="<?php echo $qty; ?>" class="form-control" min="1" max="999" />
                                 <button type="button" class="btn qtyplus">+</button>
                             </div>
                             <div class="table-row-cell text-end">
