@@ -59,8 +59,10 @@ require_once('php/entities/Product.php');
                             <div class="table-row-cell text-end">
                                 <?php echo $unproduct->getPrice() . "€"; ?>
                             </div>
-                            <div class="table-row-cell text-end">
-                                <?php echo $qty; ?>
+                            <div class="table-row-cell text-end d-flex">
+                                <button type="button" class="btn qtymoins">-</button>
+                                <input type="number" value="<?php echo $qty; ?>" class="form-control" />
+                                <button type="button" class="btn qtyplus">+</button>
                             </div>
                             <div class="table-row-cell text-end">
                                 <?php echo number_format($unproduct->getPrice() * $qty, 2) . "€"; ?>
