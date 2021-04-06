@@ -38,7 +38,7 @@ require_once('php/entities/Product.php');
                         <div class="table-row-cell">&nbsp;</div>
                         <div class="table-row-cell fw-bold">Nom du produit</div>
                         <div class="table-row-cell fw-bold text-end">Prix Unitaire</div>
-                        <div class="table-row-cell fw-bold text-end">Quantité</div>
+                        <div class="table-row-cell fw-bold text-center">Quantité</div>
                         <div class="table-row-cell fw-bold text-end">Total</div>
                         <div class="table-row-cell">&nbsp;</div>
                     </div>
@@ -59,7 +59,7 @@ require_once('php/entities/Product.php');
                             <div class="table-row-cell text-end">
                                 <?php echo $unproduct->getPrice() . "€"; ?>
                             </div>
-                            <div class="table-row-cell text-end d-flex">
+                            <div class="table-row-cell d-flex justify-content-center align-items-center">
                                 <button type="button" class="btn qtymoins">-</button>
                                 <input type="number" value="<?php echo $qty; ?>" class="form-control" />
                                 <button type="button" class="btn qtyplus">+</button>

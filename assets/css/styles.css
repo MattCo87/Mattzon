@@ -2,6 +2,10 @@ html {
     font-size: 16px;
 }
 
+img {
+    max-width: 100%;
+}
+
 /*********************************                 VIGNETTES              *******************      */
 .vignettes {
     display: grid;
@@ -74,7 +78,7 @@ html {
 
 .table-row {
     display: grid;
-    grid-template-columns: repeat(6, 1fr);
+    grid-template-columns: 15% 1fr 15% 15% 15% 10%;
     grid-gap: 1rem;
     align-items: center;
     border: 1px dotted #cfcfcf;
@@ -84,6 +88,6 @@ html {
     padding: 1rem 1.5rem;
 }
 
-.table-row-cell img {
-    height: 3rem;
+.table-row-cell input[type="number"] {
+    text-align: center;
 }
