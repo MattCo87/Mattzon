@@ -4,7 +4,7 @@ const addToCartButtons = document.getElementsByClassName('addtocart')
 const popup = document.getElementById('myPopup')
 const close = document.getElementById('closePopup')
 const emptyCart = document.getElementById('emptyCart')
-const removeCartButtons = document.getElementsByClassName('removeCart')
+const removeCartButtons = document.getElementsByClassName('removeToCart')
 
 // Fonction qui ouvre la popup
 const showPopup = e => {
@@ -89,13 +89,14 @@ if (emptyCart !== null) {
   })
 }
 
-// On parcourt les boutons "removeCart"
+// On parcourt les boutons "removeToCart"
 for (let i = 0; i < removeCartButtons.length; i++) {
     const element = removeCartButtons[i]
-    element.addEventListener('click', () => removeCart(element.dataset.productid))
+    element.addEventListener('click', () => removeToCart(element.dataset.productid))
 }
 
-const removeCart = id => {
+// Fonction qui retire un article du panier
+const removeToCart = id => {
     if (window.XMLHttpRequest) {
         const xhr = new window.XMLHttpRequest()
         xhr.open('GET', 'php/helpers/cart.php?id=' + id + '&action=remove')
@@ -107,8 +108,13 @@ const removeCart = id => {
           } else {
             const qty = xhr.responseText
             const spanCart = document.getElementById('cartNb')
-            spanCart.innerHTML = qty
+
+            //Mise à jour de la quantité du panier
+            spanCart.innerHTML = qty       
             window.alert('Le produit a été supprimé de votre panier')
+
+            // On "rafraîchit" la page
+            window.location.href = 'panier.php'  
           }
         }
     

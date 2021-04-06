@@ -66,7 +66,7 @@ require_once('php/entities/Product.php');
                                 <?php echo number_format($unproduct->getPrice() * $qty, 2) . "€"; ?>
                             </div>
                             <div class="table-row-cell text-center">
-                                <button type="button" class="btn btn-outline-danger removeCart" data-productid="<?php echo $id; ?>"><i class="fas fa-trash"></i></button>
+                                <button type="button" class="btn btn-outline-danger removeToCart" data-productid="<?php echo $id; ?>"><i class="fas fa-trash"></i></button>
                             </div>
                         </div>
 

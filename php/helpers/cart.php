@@ -18,7 +18,7 @@ if ($action) {
             break;
 
         case "remove":
-            removeCart($id);
+            removeToCart($id);
             break;
 
         default:
@@ -75,7 +75,19 @@ function emptyCart()
     echo "Panier vidé";
 }
 
-function removeCart($id)
+function removeToCart($id)
 {
+    // Suppression de l'article selectionné
     unset($_SESSION['cart'][$id]);
+
+    // Modification du panier
+    $cart = isset($_SESSION['cart']) ? $_SESSION['cart'] : [];
+    // Récupération du nombre de produits dans le panier
+    $qty = 0;
+    foreach ($cart as $itemId => $itemQty) {
+        $qty += $itemQty;
+    }
+
+    // Renvoi du nombre d'items dans le panier
+    echo $qty;
 }
