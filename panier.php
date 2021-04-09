@@ -91,6 +91,12 @@ if(isset($_SESSION['cart'])){
                 <p class="text-center">Votre panier est vide…</p>
             <?php endif; ?>
         </div>
+
+        <div class="container my-5"><hr /></div>
+
+        <div class="container">
+            <h2>Commander</h2>
+        </div>
     </main>
 
     <?php include('_footer.php'); ?>
