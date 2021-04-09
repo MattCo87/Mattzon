@@ -42,7 +42,7 @@ if(isset($_SESSION['cart'])){
             
             <?php if (!empty($_SESSION['cart'])) : ?>
                 <div class="table">
-                    <div class="table-row">
+                    <div class="table-row mb-3">
                         <div class="table-row-cell">&nbsp;</div>
                         <div class="table-row-cell fw-bold">Nom du produit</div>
                         <div class="table-row-cell fw-bold text-end">Prix Unitaire</div>
@@ -55,7 +55,7 @@ if(isset($_SESSION['cart'])){
                         $unproduct = new Product();
                         $unproduct->getProduct($id); ?>
 
-                        <div class="table-row">
+                        <div class="table-row mb-2">
                             <a href="#" class="table-row-cell text-center" title="<?php echo $unproduct->getName(); ?>">
                                 <img src="assets/img/<?php echo($unproduct->getImage()); ?>" alt="Pardon je vous la pique 2s" />
                             </a>
@@ -83,9 +83,9 @@ if(isset($_SESSION['cart'])){
                     <?php endforeach; ?>
                 </div>
 
-                <div class="table-total d-flex justify-content-end align-items-center">
-                    <p class="me-3"><span class="fw-bold">Total :</span>&nbsp;<?php echo $cartTotal; ?>€</p>
-                    <p><button type="button" class="btn btn-danger" id="emptyCart">Vider le panier</button></p>
+                <div class="table-row d-flex justify-content-end align-items-center mb-3">
+                    <p class="me-3 my-2"><span class="fw-bold">Total :</span>&nbsp;<?php echo $cartTotal; ?>€</p>
+                    <p class="my-2 me-2"><button type="button" class="btn btn-danger" id="emptyCart">Vider le panier</button></p>
                 </div>
             <?php else: ?>
                 <p class="text-center">Votre panier est vide…</p>
