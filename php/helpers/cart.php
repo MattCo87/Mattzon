@@ -20,6 +20,11 @@ if ($action) {
         case "remove":
             removeToCart($id);
             break;
+        
+        case "moins":
+        case "plus":
+            updateQty($id, $action);
+            break;
 
         default:
             echo "Action inconnue";
@@ -90,4 +95,20 @@ function removeToCart($id)
 
     // Renvoi du nombre d'items dans le panier
     echo $qty;
+}
+
+function updateQty($id, $action){
+
+    $qty = 0;
+    $cart = isset($_SESSION['cart']) ? $_SESSION['cart'] : [];
+    $objProduct = new Product;
+    $objProduct->getProduct($id);
+
+    if($action == "moins"){
+        $cart[$id]--;
+    }else{
+        $cart[$id]++;
+    }
+
+    echo number_format($objProduct->getPrice() * $cart[$id], 2);
 }

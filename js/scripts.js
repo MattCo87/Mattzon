@@ -5,6 +5,8 @@ const popup = document.getElementById('myPopup')
 const close = document.getElementById('closePopup')
 const emptyCart = document.getElementById('emptyCart')
 const removeCartButtons = document.getElementsByClassName('removeToCart')
+const qtymoins = document.getElementsByClassName('qtymoins')
+const qtyplus = document.getElementsByClassName('qtyplus')
 
 // Fonction qui ouvre la popup
 const showPopup = e => {
@@ -119,5 +121,40 @@ const removeToCart = id => {
     } else {
       console.log('No XmlHttpRequest in your browser')
     }
+  }
+}
+
+// On parcourt les boutons "qtymoins"
+for (let i = 0; i < qtymoins.length; i++) {
+  const element = qtymoins[i]
+  element.addEventListener('click', () => qtyUpdate(element.dataset.productid, "moins"))
+}
+
+// On parcourt les boutons "qtyplus"
+for (let i = 0; i < qtyplus.length; i++) {
+  const element = qtyplus[i]
+  element.addEventListener('click', () => qtyUpdate(element.dataset.productid, "plus"))
+}
+
+// Fonction décrémente quantité article
+const qtyUpdate = (id, action) =>{
+  if (window.XMLHttpRequest) {
+    const xhr = new window.XMLHttpRequest()
+    xhr.open('GET', 'php/helpers/cart.php?id=' + id + '&action=' + action)
+    xhr.send()
+
+    xhr.onload = () => {
+      if (xhr.status !== 200) {
+        console.log('Erreur : ' + xhr.status + ' - ' + xhr.statusText)
+      } else {
+        console.log(id , action)
+      }
+    }
+
+    xhr.onerror = function () {
+      console.log('La requête a échoué')
+    }
+  } else {
+    console.log('No XmlHttpRequest in your browser')
   }
 }
