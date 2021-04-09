@@ -5,16 +5,20 @@ class Database
 {
     public $dbco;
 
-    public function __construct()
+    public function __construct($isHelper = false)
     {
         // On appelle la connexion à la bdd
-        $this->dbco = $this->connection();
+        $this->dbco = $this->connection($isHelper);
     }
 
 
-    public function connection()
+    public function connection($isHelper)
     {
-        require("config/bdd.php");
+        if ($isHelper) {
+            require("../../config/bdd.php");
+        }else {
+            require("config/bdd.php");
+        }
 
         // On tente de se connecter à la BDD
         try {

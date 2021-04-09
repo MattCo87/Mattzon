@@ -97,18 +97,23 @@ function removeToCart($id)
     echo $qty;
 }
 
-function updateQty($id, $action){
-
+function updateQty($id, $action)
+{
     $qty = 0;
     $cart = isset($_SESSION['cart']) ? $_SESSION['cart'] : [];
-    $objProduct = new Product;
+
+    // Instanciation du produit
+    require_once('../entities/Product.php');
+    $objProduct = new Product(true);
     $objProduct->getProduct($id);
 
-    if($action == "moins"){
+    if ($action == "moins") {
         $cart[$id]--;
-    }else{
+    } else {
         $cart[$id]++;
     }
+
+    $_SESSION['cart'] = $cart;
 
     echo number_format($objProduct->getPrice() * $cart[$id], 2);
 }

@@ -93,8 +93,10 @@ if (emptyCart !== null) {
 
 // On parcourt les boutons "removeToCart"
 for (let i = 0; i < removeCartButtons.length; i++) {
-    const element = removeCartButtons[i]
-    element.addEventListener('click', () => removeToCart(element.dataset.productid))
+  const element = removeCartButtons[i]
+  element.addEventListener('click', () =>
+    removeToCart(element.dataset.productid)
+  )
 }
 
 // Fonction qui retire un article du panier
@@ -104,17 +106,16 @@ const removeToCart = id => {
       const xhr = new window.XMLHttpRequest()
       xhr.open('GET', 'php/helpers/cart.php?id=' + id + '&action=remove')
       xhr.send()
-  
+
       xhr.onload = () => {
         if (xhr.status !== 200) {
           console.log('Erreur : ' + xhr.status + ' - ' + xhr.statusText)
         } else {
-  
           // On "rafraîchit" la page
-          window.location.href = 'panier.php'  
+          window.location.href = 'panier.php'
         }
       }
-  
+
       xhr.onerror = function () {
         console.log('La requête a échoué')
       }
@@ -127,17 +128,25 @@ const removeToCart = id => {
 // On parcourt les boutons "qtymoins"
 for (let i = 0; i < qtymoins.length; i++) {
   const element = qtymoins[i]
-  element.addEventListener('click', () => qtyUpdate(element.dataset.productid, "moins"))
+  element.addEventListener('click', () => {
+    const qtySpan = document.getElementById('qty-' + element.dataset.productid)
+
+    if (parseInt(qtySpan.innerText) > 1) {
+      qtyUpdate(element.dataset.productid, 'moins')
+    }
+  })
 }
 
 // On parcourt les boutons "qtyplus"
 for (let i = 0; i < qtyplus.length; i++) {
   const element = qtyplus[i]
-  element.addEventListener('click', () => qtyUpdate(element.dataset.productid, "plus"))
+  element.addEventListener('click', () =>
+    qtyUpdate(element.dataset.productid, 'plus')
+  )
 }
 
 // Fonction décrémente quantité article
-const qtyUpdate = (id, action) =>{
+const qtyUpdate = (id, action) => {
   if (window.XMLHttpRequest) {
     const xhr = new window.XMLHttpRequest()
     xhr.open('GET', 'php/helpers/cart.php?id=' + id + '&action=' + action)
@@ -147,7 +156,7 @@ const qtyUpdate = (id, action) =>{
       if (xhr.status !== 200) {
         console.log('Erreur : ' + xhr.status + ' - ' + xhr.statusText)
       } else {
-        console.log(id , action)
+        window.location.reload()
       }
     }
 

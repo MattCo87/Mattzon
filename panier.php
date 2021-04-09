@@ -4,7 +4,15 @@ session_start();
 // On inclut la classe Procduct
 require_once('php/entities/Product.php');
 
-
+// On récupère le total du panier
+$cartTotal = 0;
+if(isset($_SESSION['cart'])){
+    foreach($_SESSION['cart'] as $id => $qty) {
+        $unproduct = new Product();
+        $unproduct->getProduct($id);
+        $cartTotal += $unproduct->getPrice() * $qty;
+    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -61,7 +69,7 @@ require_once('php/entities/Product.php');
                             </div>
                             <div class="table-row-cell d-flex justify-content-center align-items-center">
                                 <button type="button" class="btn qtymoins" data-productid="<?php echo $id; ?>">-</button>
-                                <span class="qty"><?php echo $qty; ?></span>
+                                <span class="qty" id="qty-<?php echo $id; ?>"><?php echo $qty; ?></span>
                                 <button type="button" class="btn qtyplus" data-productid="<?php echo $id; ?>">+</button>
                             </div>
                             <div class="table-row-cell text-end">
@@ -75,9 +83,10 @@ require_once('php/entities/Product.php');
                     <?php endforeach; ?>
                 </div>
 
-                <p class="text-end">
-                    <button type="button" class="btn btn-danger" id="emptyCart">Vider le panier</button>
-                </p>
+                <div class="table-total d-flex justify-content-end align-items-center">
+                    <p class="me-3"><span class="fw-bold">Total :</span>&nbsp;<?php echo $cartTotal; ?>€</p>
+                    <p><button type="button" class="btn btn-danger" id="emptyCart">Vider le panier</button></p>
+                </div>
             <?php else: ?>
                 <p class="text-center">Votre panier est vide…</p>
             <?php endif; ?>

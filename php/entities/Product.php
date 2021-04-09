@@ -13,9 +13,9 @@ class Product extends Database
     /**
      * Constructeur de la classe Product
      */
-    public function __construct()
+    public function __construct($isHelper = false)
     {
-        parent::__construct();
+        parent::__construct($isHelper);
     }
 
     /** Récupération de tous les produits */
