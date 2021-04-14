@@ -6,8 +6,8 @@ require_once('php/entities/Product.php');
 
 // On récupère le total du panier
 $cartTotal = 0;
-if(isset($_SESSION['cart'])){
-    foreach($_SESSION['cart'] as $id => $qty) {
+if (isset($_SESSION['cart'])) {
+    foreach ($_SESSION['cart'] as $id => $qty) {
         $unproduct = new Product();
         $unproduct->getProduct($id);
         $cartTotal += $unproduct->getPrice() * $qty;
@@ -37,9 +37,11 @@ if(isset($_SESSION['cart'])){
     <?php include('_header.php'); ?>
 
     <main class="app-main">
-        <div class="container">
+
+    <!--   ******************************************   SECTION PANIER  ********************************************** -->
+        <section class="container">
             <h1>Mon panier</h1>
-            
+
             <?php if (!empty($_SESSION['cart'])) : ?>
                 <div class="table">
                     <div class="table-row mb-3">
@@ -57,11 +59,11 @@ if(isset($_SESSION['cart'])){
 
                         <div class="table-row mb-2">
                             <a href="#" class="table-row-cell text-center" title="<?php echo $unproduct->getName(); ?>">
-                                <img src="assets/img/<?php echo($unproduct->getImage()); ?>" alt="Pardon je vous la pique 2s" />
+                                <img src="assets/img/<?php echo ($unproduct->getImage()); ?>" alt="Pardon je vous la pique 2s" />
                             </a>
                             <div class="table-row-cell">
                                 <a href="#" class="table-row-cell" title="<?php echo $unproduct->getName(); ?>">
-                                        <?php echo $unproduct->getName(); ?>
+                                    <?php echo $unproduct->getName(); ?>
                                 </a>
                             </div>
                             <div class="table-row-cell text-end">
@@ -87,18 +89,91 @@ if(isset($_SESSION['cart'])){
                     <p class="me-3 my-2"><span class="fw-bold">Total :</span>&nbsp;<?php echo $cartTotal; ?>€</p>
                     <p class="my-2 me-2"><button type="button" class="btn btn-danger" id="emptyCart">Vider le panier</button></p>
                 </div>
-            <?php else: ?>
+            <?php else : ?>
                 <p class="text-center">Votre panier est vide…</p>
             <?php endif; ?>
-        </div>
+            </div>
+        </section>
+    <!--   ******************************************   FIN SECTION PANIER  ********************************************** -->
 
-        <div class="container my-5"><hr /></div>
 
-        <div class="container">
-            <h2>Commander</h2>
-        </div>
+
+
+    <!--   ******************************************   SECTION COMMANDE  ********************************************** -->
+        <section class="container">
+
+            <div class="container my-5">
+                <hr />
+            </div>
+
+            <div class="container">
+                <h2>Commander</h2>
+            </div>
+
+            <form class="app-form" method="post" action="#">
+                    <fieldset>
+                        <legend class="bg-light">Vos coordonnées</legend>
+
+                        <div class="row mb-3">
+                            <div class="col-3">
+                                <label for="email">Votre adresse e-mail *</label>
+                            </div>
+                            <div class="col">
+                                <input type="email" id="email" name="email" class="form-control" required />
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <div class="col-3">
+                                <label for="name">Nom du destinataire *</label>
+                            </div>
+                            <div class="col">
+                                <input type="text" id="name" name="name" class="form-control" required />
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <div class="col-3">
+                                <label for="adress">Adresse du destinataire *</label>
+                            </div>
+                            <div class="col">
+                                <input type="text" id="adress" name="adress" class="form-control" required />
+                            </div>
+                        </div>
+
+                    </fieldset>
+
+                    <hr />
+
+                    <fieldset>
+                        <legend class="bg-light">Votre commande</legend>
+
+                        <div class="row mb-3">
+                            Bon de commande
+                        </div>
+
+
+
+                        
+                    </fieldset>
+
+                    <hr />
+
+                    <div class="row">
+                        <div class="col text-center">
+                            <button type="submit" class="btn btn-primary ">Acheter</button>
+                        </div>
+                    </div>
+                </form>
+       
+
+
+
+        </section>
+    <!--   ******************************************   FIN SECTION COMMANDE  ********************************************** -->
+
+
     </main>
-
     <?php include('_footer.php'); ?>
 </body>
 
