@@ -38,7 +38,7 @@ if (isset($_SESSION['cart'])) {
 
     <main class="app-main">
 
-    <!--   ******************************************   SECTION PANIER  ********************************************** -->
+        <!--   ******************************************   SECTION PANIER  ********************************************** -->
         <section class="container">
             <h1>Mon panier</h1>
 
@@ -74,6 +74,9 @@ if (isset($_SESSION['cart'])) {
                                 <span class="qty" id="qty-<?php echo $id; ?>"><?php echo $qty; ?></span>
                                 <button type="button" class="btn qtyplus" data-productid="<?php echo $id; ?>">+</button>
                             </div>
+
+
+
                             <div class="table-row-cell text-end">
                                 <?php echo number_format($unproduct->getPrice() * $qty, 2) . "€"; ?>
                             </div>
@@ -94,12 +97,12 @@ if (isset($_SESSION['cart'])) {
             <?php endif; ?>
             </div>
         </section>
-    <!--   ******************************************   FIN SECTION PANIER  ********************************************** -->
+        <!--   ******************************************   FIN SECTION PANIER  ********************************************** -->
 
 
 
 
-    <!--   ******************************************   SECTION COMMANDE  ********************************************** -->
+        <!--   ******************************************   SECTION COMMANDE  ********************************************** -->
         <section class="container">
 
             <div class="container my-5">
@@ -109,68 +112,56 @@ if (isset($_SESSION['cart'])) {
             <div class="container">
                 <h2>Commander</h2>
             </div>
-
+            
             <form class="app-form" method="post" action="#">
-                    <fieldset>
-                        <legend class="bg-light">Vos coordonnées</legend>
+                <fieldset>
+                    <legend class="bg-light">Vos coordonnées</legend>
 
-                        <div class="row mb-3">
-                            <div class="col-3">
-                                <label for="email">Votre adresse e-mail *</label>
-                            </div>
-                            <div class="col">
-                                <input type="email" id="email" name="email" class="form-control" required />
-                            </div>
+                    <div class="row mb-3">
+                        <div class="col-3">
+                            <label for="name">Nom du destinataire *</label>
                         </div>
-
-                        <div class="row mb-3">
-                            <div class="col-3">
-                                <label for="name">Nom du destinataire *</label>
-                            </div>
-                            <div class="col">
-                                <input type="text" id="name" name="name" class="form-control" required />
-                            </div>
-                        </div>
-
-                        <div class="row mb-3">
-                            <div class="col-3">
-                                <label for="adress">Adresse du destinataire *</label>
-                            </div>
-                            <div class="col">
-                                <input type="text" id="adress" name="adress" class="form-control" required />
-                            </div>
-                        </div>
-
-                    </fieldset>
-
-                    <hr />
-
-                    <fieldset>
-                        <legend class="bg-light">Votre commande</legend>
-
-                        <div class="row mb-3">
-                            Bon de commande
-                        </div>
-
-
-
-                        
-                    </fieldset>
-
-                    <hr />
-
-                    <div class="row">
-                        <div class="col text-center">
-                            <button type="submit" class="btn btn-primary ">Acheter</button>
+                        <div class="col">
+                            <input type="text" id="name" name="name" class="form-control" placeholder="ex: Monsieur Patrice Thomas" required />
                         </div>
                     </div>
-                </form>
-       
+
+                    <div class="row mb-3">
+                        <div class="col-3">
+                            <label for="adress">Adresse du destinataire *</label>
+                        </div>
+                        <div class="col">
+                            <input type="text" id="adress" name="adress" class="form-control" placeholder="ex: 3, rue du docteur Jean. 17000 Saintes" required />
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col-3">
+                            <label for="contact">Contact *</label>
+                        </div>
+                        <div class="col">
+                            <input type="text" id="contact" name="contact" class="form-control" placeholder="Numéro de téléphone OU adresse e-mail" required />
+                        </div>
+                    </div>
+
+                </fieldset>
+
+                <hr />
+
+<!-- BOUTON BUY -->
+                <div class="row">
+                    <div class="col text-center">
+                        <button type="submit" class="btn btn-primary ">Acheter</button>
+                    </div>
+                </div>
+<!-- BOUTON BUY -->
+            </form>
+
 
 
 
         </section>
-    <!--   ******************************************   FIN SECTION COMMANDE  ********************************************** -->
+        <!--   ******************************************   FIN SECTION COMMANDE  ********************************************** -->
 
 
     </main>

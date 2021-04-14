@@ -78,7 +78,7 @@ img {
 
 .table-row {
     display: grid;
-    grid-template-columns: 15% 1fr 15% 15% 15% 10%;
+    grid-template-columns: 15% 15% 15% 15% 15% 10% 10%;
     grid-gap: 1rem;
     align-items: center;
     border: 1px dotted #cfcfcf;

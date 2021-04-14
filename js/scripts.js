@@ -8,6 +8,7 @@ const removeCartButtons = document.getElementsByClassName('removeToCart')
 const qtymoins = document.getElementsByClassName('qtymoins')
 const qtyplus = document.getElementsByClassName('qtyplus')
 
+
 // Fonction qui ouvre la popup
 const showPopup = e => {
   popup.style = 'display: flex'
@@ -167,3 +168,8 @@ const qtyUpdate = (id, action) => {
     console.log('No XmlHttpRequest in your browser')
   }
 }
+
+
+
+
+
