@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-// On inclut la classe Procduct
+// On inclut la classe Product
 require_once('php/entities/Product.php');
 
 // On récupère le total du panier
@@ -113,7 +113,7 @@ if (isset($_SESSION['cart'])) {
                 <h2>Commander</h2>
             </div>
             
-            <form class="app-form" method="post" action="#">
+            <form class="app-form" method="post" action="confirmOrder.php">
                 <fieldset>
                     <legend class="bg-light">Vos coordonnées</legend>
 
@@ -140,7 +140,7 @@ if (isset($_SESSION['cart'])) {
                             <label for="contact">Contact *</label>
                         </div>
                         <div class="col">
-                            <input type="text" id="contact" name="contact" class="form-control" placeholder="Numéro de téléphone OU adresse e-mail" required />
+                            <input type="email" id="contact" name="contact" class="form-control" placeholder="ex: PThomas@gmail.com" required />
                         </div>
                     </div>
 
@@ -148,13 +148,13 @@ if (isset($_SESSION['cart'])) {
 
                 <hr />
 
-<!-- BOUTON BUY -->
+<!-- BOUTON COMMANDER -->
                 <div class="row">
                     <div class="col text-center">
-                        <button type="submit" class="btn btn-primary ">Acheter</button>
+                        <button type="submit" class="btn btn-primary ">Commander</button>
                     </div>
                 </div>
-<!-- BOUTON BUY -->
+<!-- BOUTON COMMANDER -->
             </form>
 
 
