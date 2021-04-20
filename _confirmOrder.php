@@ -4,7 +4,7 @@
 require_once('php/entities/User.php');
 require_once('php/entities/Product.php');
 require_once('php/entities/Order.php');
-
+require_once('php/entities/OrderProduct.php');
 
 
 // On accède à la session
@@ -30,6 +30,24 @@ if (!empty($_POST)) {
         'live' => "En cours de traitement",
         'iduser' => $_SESSION['id'],
     ]);
+
+
+
+    // Ajout d'une liste de produit par commande
+    $OrderProduct = new OrderProduct();
+    foreach ($_SESSION['cart'] as $id => $qty) {
+        $unproduct = new Product();
+            
+        // Prix à calculer selon les réductions en cours
+        $unprix = $unproduct->getPrice();
+
+        $error = $OrderProduct->addOrderProduct([
+            'idorders' => ,
+            'idproduct' => $id,
+            'quantity' => $qty,
+            'price' => $unprix,
+        ]);
+    }
 }
 
 ?>

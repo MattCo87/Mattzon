@@ -113,7 +113,7 @@ if (isset($_SESSION['cart'])) {
                 <h2>Commander</h2>
             </div>
             
-            <form class="app-form" method="post" action="confirmOrder.php">
+            <form class="app-form" method="post" action="_confirmOrder.php">
                 <fieldset>
                     <legend class="bg-light">Vos coordonnées</legend>
 
