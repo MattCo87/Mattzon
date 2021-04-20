@@ -77,9 +77,11 @@ class Order extends Database
             // Si on arrive ici, alors on exécute la transaction :)
             $this->dbco->commit();
 
+            return $this->dbco->lastInsertId();
+
         } catch (PDOException $exception) {
             // On annule la transaction (on remet dans l'état initial)
-            $$this->dbco->rollback();
+            $this->dbco->rollback();
 
             // On gère l'exception
             die($exception->getMessage());

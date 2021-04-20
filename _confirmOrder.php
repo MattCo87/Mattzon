@@ -21,7 +21,7 @@ if (isset($_SESSION['user'])) {
 if (!empty($_POST)) {
     // Ajout d'une commande
     $order = new Order();
-    $error = $order->addOrder([
+    $result = $order->addOrder([
         'dateconfirm' => date("Y-m-d H:i:s"),
         'datedelivery' => date("Y-m-d H:i:s"),
         'receiver' => $_POST['name'],
@@ -31,7 +31,7 @@ if (!empty($_POST)) {
         'iduser' => $_SESSION['id'],
     ]);
 
-
+        var_dump($result);
 
     // Ajout d'une liste de produit par commande
     $OrderProduct = new OrderProduct();
@@ -42,7 +42,7 @@ if (!empty($_POST)) {
         $unprix = $unproduct->getPrice();
 
         $error = $OrderProduct->addOrderProduct([
-            'idorders' => ,
+            'idorders' => $result,
             'idproduct' => $id,
             'quantity' => $qty,
             'price' => $unprix,
